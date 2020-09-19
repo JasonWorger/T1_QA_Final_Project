@@ -24,6 +24,7 @@ module "infrastructure" {
   vpc_cidr_block = var.vpc_cidr_block
 
   # Subnet Config
+  public_cidr_block = var.public_cidr_block
   private_eks_cidr_block = var.private_eks_cidr_block
   private_rds_cidr_block = var.private_rds_cidr_block
 
