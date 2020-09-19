@@ -87,7 +87,7 @@ resource "aws_security_group" "k8s_node_sec_group" {
 
   tags = {
     Name                                        = "${var.environment} - k8s Node Security Group"
-    "kubernetes.io/cluster/${var.cluster_name}" = owned
+    "kubernetes.io/cluster/${var.cluster_name}" = "owned"
   }
 }
 

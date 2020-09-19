@@ -6,6 +6,6 @@ resource "aws_vpc" "VPC" {
   tags = {
     Name                                        = "${var.environment} - VPC"
     Project                                     = "FP-T1"
-    "kubernetes.io/cluster/${var.cluster_name}" = shared # Makes our VPC discoverable by kubernetes.
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared" # Makes our VPC discoverable by kubernetes.
   }
 }

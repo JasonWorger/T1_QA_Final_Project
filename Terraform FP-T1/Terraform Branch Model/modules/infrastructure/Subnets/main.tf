@@ -11,7 +11,7 @@ resource "aws_subnet" "public_subnet" {
   tags = {
     Name                                        = "${var.environment} - Public Subnet"
     Project                                     = "FP-T1"
-    "kubernetes.io/cluster/${var.cluster_name}" = shared # Makes our VPC discoverable by kubernetes.
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared" # Makes our VPC discoverable by kubernetes.
     "kubernetes.io/role/elb"                    = 1      # Indicates that this subnet is to be used for load balancing.
   }
 }
@@ -26,7 +26,7 @@ resource "aws_subnet" "private_eks_subnet" {
   tags = {
     Name                                        = "${var.environment} - Private EKS Subnet"
     Project                                     = "FP-T1"
-    "kubernetes.io/cluster/${var.cluster_name}" = shared # Makes our VPC discoverable by kubernetes.
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared" # Makes our VPC discoverable by kubernetes.
   }
 }
 
