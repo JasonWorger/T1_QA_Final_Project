@@ -1,4 +1,5 @@
 # Create an IAM Role to allow our EKS service to manage other AWS services.
+# Create an IAM Role which provides autoscaling permissions.
 
 resource "aws_iam_role" "node_role" {
   name = "FP-T1_node_role-${var.environment}"
@@ -14,6 +15,21 @@ resource "aws_iam_role" "node_role" {
           "Service": "ec2.amazonaws.com"
         },
         "Action": "sts:AssumeRole"
+      }
+
+      {
+        "Effect": "Allow",
+        "Resource": "*",
+
+        "Action": [
+          "autoscaling:DescribeAutoScalingGroups",
+          "autoscaling:DescribeAutoScalingInstances",
+          "autoscaling:DescribeLaunchConfigurations",
+          "autoscaling:DescribeTags",
+          "autoscaling:SetDesiredCapacity",
+          "autoscaling:TerminateInstanceInAutoScalingGroup",
+          "ec2:DescribeLaunchTemplateVersions"
+        ]
       }
     ]
   }
