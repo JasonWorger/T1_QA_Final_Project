@@ -15,9 +15,11 @@ locals {
 module "VPC" {
   source = "./VPC"
 
-  environment = var.environment
+  environment    = var.environment
 
-  cluster_name = local.cluster_name
+  vpc_cidr_block = var.vpc_cidr_block
+
+  cluster_name   = local.cluster_name
 }
 
 # Create Subnets within our VPC.
