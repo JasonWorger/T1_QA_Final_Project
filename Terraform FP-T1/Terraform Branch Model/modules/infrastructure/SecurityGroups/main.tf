@@ -116,7 +116,7 @@ resource "aws_security_group_rule" "cluster_controller_developer_communication_H
   to_port   = 443
   protocol  = "tcp"
 
-  security_group_id = aws_security_group.k8s_controller_sec_group # The security group to apply this rule to.
+  security_group_id = aws_security_group.k8s_controller_sec_group.id # The security group to apply this rule to.
   cidr_blocks       = [var.controller_IP_CIDR]                    # The IP CIDR to allow access from.
 }
 
