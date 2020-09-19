@@ -5,23 +5,20 @@ resource "aws_iam_role" "node_role" {
   name        = "FP-T1_node_role-${var.environment}"
   description = "Amazon EKS - ${var.environment} - Node Group Role"
 
-  assume_role_policy = <<EOF
-  {
-    "Version": "2012-10-17",
-    "Statement": [
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
       {
-        "Effect": "Allow",
-        "Principal": {
-          "Service": "ec2.amazonaws.com"
-        },
-        "Action": "sts:AssumeRole"
-      }
-
+        Effect = "Allow"
+        Action: "sts:AssumeRole"
+        Principal = {
+          Service = "ec2.amazonaws.com"
+        }
+      },
       {
-        "Effect": "Allow",
-        "Resource": "*",
-
-        "Action": [
+        Effect = "Allow",
+        Resource = "*",
+        Action = [
           "autoscaling:DescribeAutoScalingGroups",
           "autoscaling:DescribeAutoScalingInstances",
           "autoscaling:DescribeLaunchConfigurations",
@@ -32,8 +29,7 @@ resource "aws_iam_role" "node_role" {
         ]
       }
     ]
-  }
-  EOF
+  })
 
   tags = {
     Name    = "${var.environment} - EKS Node Group Role"
