@@ -17,7 +17,7 @@ provider "aws" {
 }
 
 module "infrastructure" {
-  source = "../../modules/infrastructure"
+  source = "..\/..\/moduleses\/infrastructure"
   environment = var.environment
 
   # VPC Config
