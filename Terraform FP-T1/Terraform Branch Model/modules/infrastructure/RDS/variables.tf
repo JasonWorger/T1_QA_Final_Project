@@ -8,21 +8,6 @@ variable "region" {
   default = "This variable must be defined at environment level."
 }
 
-variable "vpc_id" {
-  description = "The ID of the VPC belonging to each subnet."
-  default = "This variable must be defined at environment level."
-}
-
-variable "public_subnet_id" {
-  description = "The ID of our public subnet."
-  default = "This variable must be defined at environment level."
-}
-
-variable "private_subnet_id" {
-  description = "The ID of our private subnet."
-  default = "This variable must be defined at environment level."
-}
-
 variable "database_instance_class" {
   description = "The instance that our Database will be running on."
   default = "This variable must be defined at environment level."
