@@ -23,7 +23,6 @@ resource "aws_iam_role" "cluster_role" {
     Name = "${var.environment} - EKS Cluster Role"
     Project = "FP-T1"
   }
-
 }
 
 # Attach the EKS Cluster Policy to the role.
@@ -37,5 +36,13 @@ resource "aws_iam_role_policy_attachment" "eks_cluster_EKSClusterPolicy" {
 
 resource "aws_iam_role_policy_attachment" "eks_cluster_EKSServicePolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
+  role       = aws_iam_role.cluster_role.name
+}
+
+# Optionally, enable Security Groups for Pods
+# Reference: https://docs.aws.amazon.com/eks/latest/userguide/security-groups-for-pods.html
+
+resource "aws_iam_role_policy_attachment" "example-AmazonEKSVPCResourceController" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSVPCResourceController"
   role       = aws_iam_role.cluster_role.name
 }

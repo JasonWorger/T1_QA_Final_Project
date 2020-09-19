@@ -3,11 +3,6 @@ variable "environment" {
   default = "This variable must be defined at environment level."
 }
 
-variable "region" {
-  description = "The region which this infrastructure will be running in."
-  default = "This variable must be defined at environment level."
-}
-
 variable "database_instance_class" {
   description = "The instance that our Database will be running on."
   default = "This variable must be defined at environment level."
