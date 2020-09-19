@@ -14,7 +14,7 @@ resource "aws_security_group" "rds_sec_group" {
   }
 
   tags = {
-    Name = "${var.environment} - RDS Security Group"
+    Name    = "${var.environment} - RDS Security Group"
     Project = "FP-T1"
   }
 }
@@ -22,30 +22,30 @@ resource "aws_security_group" "rds_sec_group" {
 # Add additional ingress rules to our rds security group.
 
 resource "aws_security_group_rule" "rds_k8s_node_communication" {
-  description              = "Allow our k8s node group to communicate with the RDS."
+  description = "Allow our k8s node group to communicate with the RDS."
 
-  type                     = "ingress"
+  type = "ingress"
 
-  from_port                = 3306
-  to_port                  = 3306
-  protocol                 = "tcp"
+  from_port = 3306
+  to_port   = 3306
+  protocol  = "tcp"
 
-  security_group_id        = aws_security_group.rds_sec_group.id  # The security group to apply this rule to.
-  source_security_group_id = aws_security_group.k8s_node_sec_group.id  # The security group to allow access from.
+  security_group_id        = aws_security_group.rds_sec_group.id      # The security group to apply this rule to.
+  source_security_group_id = aws_security_group.k8s_node_sec_group.id # The security group to allow access from.
 }
 
 
 resource "aws_security_group_rule" "rds_dev_communication" {
-  description              = "Allow our dev machine to communicate with the RDS."
+  description = "Allow our dev machine to communicate with the RDS."
 
-  type                     = "ingress"
+  type = "ingress"
 
-  from_port                = 3306
-  to_port                  = 3306
-  protocol                 = "tcp"
+  from_port = 3306
+  to_port   = 3306
+  protocol  = "tcp"
 
-  security_group_id        = aws_security_group.rds_sec_group.id  # The security group to apply this rule to.
-  cidr_blocks       = [var.controller_IP_CIDR]  # The IP CIDR to allow access from.
+  security_group_id = aws_security_group.rds_sec_group.id # The security group to apply this rule to.
+  cidr_blocks       = [var.controller_IP_CIDR]            # The IP CIDR to allow access from.
 }
 
 # https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html
@@ -66,7 +66,7 @@ resource "aws_security_group" "k8s_controller_sec_group" {
   }
 
   tags = {
-    Name = "${var.environment} - k8s Controller Security Group"
+    Name    = "${var.environment} - k8s Controller Security Group"
     Project = "FP-T1"
   }
 }
@@ -86,64 +86,64 @@ resource "aws_security_group" "k8s_node_sec_group" {
   }
 
   tags = {
-    Name = "${var.environment} - k8s Node Security Group"
+    Name                                        = "${var.environment} - k8s Node Security Group"
     "kubernetes.io/cluster/${var.cluster_name}" = owned
-    }
+  }
 }
 
 # Add additional ingress rules to our cluster security group.
 
 resource "aws_security_group_rule" "cluster_controller_pod_communication_HTTPS" {
-  description              = "Allow our pods to communicate with the kubernetes API Server over HTTPS."
+  description = "Allow our pods to communicate with the kubernetes API Server over HTTPS."
 
-  type                     = "ingress"
+  type = "ingress"
 
-  from_port                = 443  # Maybe also 10250 as well? Will have to test.
-  to_port                  = 443
-  protocol                 = "tcp"
+  from_port = 443 # Maybe also 10250 as well? Will have to test.
+  to_port   = 443
+  protocol  = "tcp"
 
-  security_group_id        = aws_security_group.k8s_controller_sec_group.id  # The security group to apply this rule to.
-  source_security_group_id = aws_security_group.k8s_node_sec_group.id  # The security group to allow access from.
+  security_group_id        = aws_security_group.k8s_controller_sec_group.id # The security group to apply this rule to.
+  source_security_group_id = aws_security_group.k8s_node_sec_group.id       # The security group to allow access from.
 }
 
 
 resource "aws_security_group_rule" "cluster_controller_developer_communication_HTTPS" {
-  description       = "Allow our development machine to communicate with the cluster API Server."
+  description = "Allow our development machine to communicate with the cluster API Server."
 
-  type              = "ingress"
+  type = "ingress"
 
-  from_port         = 443
-  to_port           = 443
-  protocol          = "tcp"
+  from_port = 443
+  to_port   = 443
+  protocol  = "tcp"
 
-  security_group_id = aws_security_group.k8s_controller_sec_group  # The security group to apply this rule to.
-  cidr_blocks       = [var.controller_IP_CIDR]  # The IP CIDR to allow access from.
+  security_group_id = aws_security_group.k8s_controller_sec_group # The security group to apply this rule to.
+  cidr_blocks       = [var.controller_IP_CIDR]                    # The IP CIDR to allow access from.
 }
 
 # Add additional ingress rules to our cluster node group.
 
 resource "aws_security_group_rule" "node_communication" {
-  description              = "Allow our cluster nodes to communicate with each other."
+  description = "Allow our cluster nodes to communicate with each other."
 
-  type                     = "ingress"
+  type = "ingress"
 
-  from_port                = 0
-  to_port                  = 65535
-  protocol                 = "-1"
+  from_port = 0
+  to_port   = 65535
+  protocol  = "-1"
 
-  security_group_id        = aws_security_group.k8s_node_sec_group.id  # The security group to apply this rule to.
-  source_security_group_id = aws_security_group.k8s_node_sec_group.id  # The security group to allow access from.
+  security_group_id        = aws_security_group.k8s_node_sec_group.id # The security group to apply this rule to.
+  source_security_group_id = aws_security_group.k8s_node_sec_group.id # The security group to allow access from.
 }
 
 resource "aws_security_group_rule" "demo-node-ingress-cluster" {
-  description              = "Allows our pods to receive communication from the k8s API."
+  description = "Allows our pods to receive communication from the k8s API."
 
-  type                     = "ingress"
+  type = "ingress"
 
-  from_port                = 1025
-  to_port                  = 65535
-  protocol                 = "tcp"
+  from_port = 1025
+  to_port   = 65535
+  protocol  = "tcp"
 
-  security_group_id        = aws_security_group.k8s_node_sec_group.id  # The security group to apply this rule to.
-  source_security_group_id = aws_security_group.k8s_controller_sec_group.id  # The security group to allow access from.
+  security_group_id        = aws_security_group.k8s_node_sec_group.id       # The security group to apply this rule to.
+  source_security_group_id = aws_security_group.k8s_controller_sec_group.id # The security group to allow access from.
 }

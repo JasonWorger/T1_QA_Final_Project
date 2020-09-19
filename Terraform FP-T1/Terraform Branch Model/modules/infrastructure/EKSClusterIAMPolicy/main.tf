@@ -1,7 +1,7 @@
 # Create an IAM Role to allow our EKS service to manage other AWS services.
 
 resource "aws_iam_role" "cluster_role" {
-  name = "FP-T1_cluster_role-${var.environment}"
+  name        = "FP-T1_cluster_role-${var.environment}"
   description = "Amazon EKS - ${var.environment} - Cluster Group Role"
 
   assume_role_policy = <<EOF
@@ -20,7 +20,7 @@ resource "aws_iam_role" "cluster_role" {
   EOF
 
   tags = {
-    Name = "${var.environment} - EKS Cluster Role"
+    Name    = "${var.environment} - EKS Cluster Role"
     Project = "FP-T1"
   }
 }

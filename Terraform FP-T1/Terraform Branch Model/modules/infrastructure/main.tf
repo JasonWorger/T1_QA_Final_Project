@@ -28,7 +28,7 @@ module "Subnets" {
 
   vpc_id = module.VPC.vpc_id
 
-  public_cidr_block = var.public_cidr_block
+  public_cidr_block      = var.public_cidr_block
   private_eks_cidr_block = var.private_eks_cidr_block
   private_rds_cidr_block = var.private_rds_cidr_block
 
@@ -47,7 +47,7 @@ module "SecurityGroups" {
   vpc_id = module.VPC.vpc_id
 
   private_eks_subnet_id = module.Subnets.private_eks_subnet_id
-  public_subnet_id = module.Subnets.public_subnet_id
+  public_subnet_id      = module.Subnets.public_subnet_id
 
   controller_IP_CIDR = var.controller_IP_CIDR
 
@@ -71,22 +71,22 @@ module "EKSNodeIAMPolicy" {
 
 # Create Cluster. Depends on IAM roles!
 module "EKS" {
-  source = "./EKS"
+  source     = "./EKS"
   depends_on = [module.EKSClusterIAMPolicy, module.EKSNodeIAMPolicy]
 
   environment = var.environment
 
   eks_cluster_sec_group_id = module.SecurityGroups.k8s_controller_sec_group_id
-  eks_node_sec_group_id = module.SecurityGroups.k8s_node_sec_group_id
+  eks_node_sec_group_id    = module.SecurityGroups.k8s_node_sec_group_id
 
   ssh_key_pair_name = var.ssh_key_pair_name
 
   private_eks_subnet_id = module.Subnets.private_eks_subnet_id
-  public_subnet_id = module.Subnets.public_subnet_id
+  public_subnet_id      = module.Subnets.public_subnet_id
 
 
   eks_cluster_role_arn = module.EKSClusterIAMPolicy.EKSClusterIAMPolicyARN
-  eks_node_role_arn = module.EKSNodeIAMPolicy.EKSNodeIAMPolicyARN
+  eks_node_role_arn    = module.EKSNodeIAMPolicy.EKSNodeIAMPolicyARN
 
   desired_node_group_size = var.desired_node_group_size
   maximum_node_group_size = var.maximum_node_group_size
@@ -99,10 +99,10 @@ module "RDS" {
   environment = var.environment
 
   db_subnet_group_name = module.Subnets.rds_subnet_name
-  rds_sec_group_id = module.SecurityGroups.rds_sec_group_id
+  rds_sec_group_id     = module.SecurityGroups.rds_sec_group_id
 
   database_instance_class = var.database_instance_class
 
-  db_root_password = var.db_root_password
+  db_root_password         = var.db_root_password
   db_max_allocated_storage = var.db_max_allocated_storage
 }

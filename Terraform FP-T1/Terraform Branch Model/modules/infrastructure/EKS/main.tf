@@ -5,12 +5,12 @@ resource "aws_eks_cluster" "eks_cluster" {
   role_arn = var.eks_cluster_role_arn
 
   vpc_config {
-    subnet_ids = [var.public_subnet_id, var.private_eks_subnet_id]
+    subnet_ids         = [var.public_subnet_id, var.private_eks_subnet_id]
     security_group_ids = [var.eks_cluster_sec_group_id]
   }
 
   tags = {
-    Name = "${var.environment} - EKS Cluster"
+    Name    = "${var.environment} - EKS Cluster"
     Project = "FP-T1"
   }
 }
@@ -26,8 +26,8 @@ resource "aws_eks_node_group" "eks_node_group" {
   # All EKS managed node groups are provisioned as an autoscaling group.
 
   remote_access {
-    ec2_ssh_key = var.ssh_key_pair_name
-      source_security_group_ids = [var.eks_node_sec_group_id]
+    ec2_ssh_key               = var.ssh_key_pair_name
+    source_security_group_ids = [var.eks_node_sec_group_id]
   }
 
   scaling_config {
@@ -37,7 +37,7 @@ resource "aws_eks_node_group" "eks_node_group" {
   }
 
   tags = {
-    Name = "${var.environment} - EKS Node Group"
+    Name    = "${var.environment} - EKS Node Group"
     Project = "FP-T1"
   }
 }

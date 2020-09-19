@@ -2,7 +2,7 @@
 # Create an IAM Role which provides autoscaling permissions.
 
 resource "aws_iam_role" "node_role" {
-  name = "FP-T1_node_role-${var.environment}"
+  name        = "FP-T1_node_role-${var.environment}"
   description = "Amazon EKS - ${var.environment} - Node Group Role"
 
   assume_role_policy = <<EOF
@@ -36,7 +36,7 @@ resource "aws_iam_role" "node_role" {
   EOF
 
   tags = {
-    Name = "${var.environment} - EKS Node Group Role"
+    Name    = "${var.environment} - EKS Node Group Role"
     Project = "FP-T1"
   }
 }
@@ -52,12 +52,12 @@ resource "aws_iam_role_policy_attachment" "eks_cluster_EKSWorkerNodePolicy" {
 
 resource "aws_iam_role_policy_attachment" "eks_cluster_EKS_CNI_Policy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
-  role = aws_iam_role.node_role.name
+  role       = aws_iam_role.node_role.name
 }
 
 # Attach the EC2 Container Registry Read Only Policy to this role.
 
 resource "aws_iam_role_policy_attachment" "eks_cluster_CR_ReadOnly_Policy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
-  role = aws_iam_role.node_role.name
+  role       = aws_iam_role.node_role.name
 }
