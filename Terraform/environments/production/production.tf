@@ -8,7 +8,8 @@ variable "db_max_allocated_storage" {}
 variable "controller_IP_CIDR" {}
 variable "public_cidr_block" {}
 variable "private_eks_cidr_block" {}
-variable "private_rds_cidr_block" {}
+variable "private_rds_1_cidr_block" {}
+variable "private_rds_2_cidr_block" {}
 variable "vpc_cidr_block" {}
 variable "ssh_key_pair_name" {}
 
@@ -17,16 +18,17 @@ provider "aws" {
 }
 
 module "infrastructure" {
-  source                   = "..\/..\/moduleses\/infrastructure"
-  environment              = var.environment
+  source = "../../modules/infrastructure"
+  environment = var.environment
 
   # VPC Config
-  vpc_cidr_block           = var.vpc_cidr_block
+  vpc_cidr_block = var.vpc_cidr_block
 
   # Subnet Config
   public_cidr_block        = var.public_cidr_block
   private_eks_cidr_block   = var.private_eks_cidr_block
-  private_rds_cidr_block   = var.private_rds_cidr_block
+  private_rds_1_cidr_block = var.private_rds_1_cidr_block
+  private_rds_2_cidr_block = var.private_rds_2_cidr_block
 
   # SSH Key Pair
   ssh_key_pair_name        = var.ssh_key_pair_name

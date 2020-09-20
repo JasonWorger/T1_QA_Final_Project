@@ -1,3 +1,16 @@
+# Terraform AWS IAM User requirements
+
+The terraform IAM user requires the following permissions:
+
+AmazonEC2FullAccess
+VPCFullAccess
+IAMFullAccess
+RDSFullAccess
+
+
+
+
+
 # Configuring Terraform
 
 cd to the staging directory within the environments directory. 

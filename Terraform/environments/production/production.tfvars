@@ -16,4 +16,5 @@ vpc_cidr_block = "18.0.0.0/16"
 
 public_cidr_block = "18.0.1.0/24"
 private_eks_cidr_block = "18.0.2.0/24"
-private_rds_cidr_block = "18.0.3.0/24"
+private_rds_1_cidr_block = "18.0.3.0/24"
+private_rds_2_cidr_block = "18.0.4.0/24"

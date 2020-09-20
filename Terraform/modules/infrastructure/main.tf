@@ -32,7 +32,8 @@ module "Subnets" {
 
   public_cidr_block      = var.public_cidr_block
   private_eks_cidr_block = var.private_eks_cidr_block
-  private_rds_cidr_block = var.private_rds_cidr_block
+  private_rds_1_cidr_block = var.private_rds_1_cidr_block
+  private_rds_2_cidr_block = var.private_rds_2_cidr_block
 
   cluster_name = local.cluster_name
 }

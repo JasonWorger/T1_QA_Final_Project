@@ -23,7 +23,12 @@ variable "private_eks_cidr_block" {
   default     = "This variable must be defined at environment level."
 }
 
-variable "private_rds_cidr_block" {
+variable "private_rds_1_cidr_block" {
+  description = "The CIDR block belonging to our private rds subnet."
+  default     = "This variable must be defined at environment level."
+}
+
+variable "private_rds_2_cidr_block" {
   description = "The CIDR block belonging to our private rds subnet."
   default     = "This variable must be defined at environment level."
 }

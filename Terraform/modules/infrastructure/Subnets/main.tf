@@ -32,20 +32,33 @@ resource "aws_subnet" "private_eks_subnet" {
 
 # Create a second private subnet for our database instance.
 
-resource "aws_subnet" "private_rds_subnet" {
+resource "aws_subnet" "private_rds_subnet_az1" {
   vpc_id                  = var.vpc_id
-  cidr_block              = var.private_rds_cidr_block
+  cidr_block              = var.private_rds_1_cidr_block
   map_public_ip_on_launch = false
 
   tags = {
-    Name    = "${var.environment} - Private RDS Subnet"
+    Name    = "${var.environment} - Private RDS Subnet AZ1"
     Project = "FP-T1"
   }
 }
 
+resource "aws_subnet" "private_rds_subnet_az2" {
+  vpc_id                  = var.vpc_id
+  cidr_block              = var.private_rds_2_cidr_block
+  map_public_ip_on_launch = false
+
+  tags = {
+    Name    = "${var.environment} - Private RDS Subnet AZ2"
+    Project = "FP-T1"
+  }
+}
+
+
+
 resource "aws_db_subnet_group" "rds_subnet_group" {
   name       = "${var.environment}-rds_subnet_group"
-  subnet_ids = [aws_subnet.private_rds_subnet.id]
+  subnet_ids = [aws_subnet.private_rds_subnet_az1.id, aws_subnet.private_rds_subnet_az2]
 
   tags = {
     Name    = "${var.environment} - Private RDS Subnet Group"
