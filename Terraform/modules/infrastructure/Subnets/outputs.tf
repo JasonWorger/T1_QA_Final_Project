@@ -1,25 +1,23 @@
 output "public_subnet_az1_id" {
   value       = aws_subnet.public_subnet_az_1.id
-  description = "The AWS ID for our public subnet, within our main VPC."
+  description = "The AWS ID for our public subnet 1, within our main VPC."
 }
 
 output "public_subnet_az2_id" {
   value       = aws_subnet.public_subnet_az_2.id
-  description = "The AWS ID for our public subnet, within our main VPC."
+  description = "The AWS ID for our public subnet 2, within our main VPC."
 }
 
 
 output "private_eks_subnet_az1_id" {
   value       = aws_subnet.private_eks_subnet_1.id
-  description = "The AWS ID for the private subnet, within the main VPC."
+  description = "The AWS ID for the private subnet 1, within the main VPC."
 }
 
 output "private_eks_subnet_az2_id" {
   value       = aws_subnet.private_eks_subnet_2.id
-  description = "The AWS ID for the private subnet, within the main VPC."
+  description = "The AWS ID for the private subnet 2, within the main VPC."
 }
-
-
 
 
 output "rds_subnet_name" {
