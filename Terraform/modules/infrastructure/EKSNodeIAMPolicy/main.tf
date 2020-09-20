@@ -27,10 +27,11 @@ resource "aws_iam_role" "node_role" {
 
 resource "aws_iam_role_policy" "eks_autoscaling_policy" {
 
-  name = "${var.environment}_eks_autoscaling_policy"
-  role = aws_iam_role.node_role.id
+  name       = "${var.environment}_eks_autoscaling_policy"
+  role       = aws_iam_role.node_role.id
+  depends_on = [aws_iam_role.node_role]
 
-  policy = jsonencode({
+  policy     = jsonencode({
     Version = "2012-10-17",
     Statement = [
       {
@@ -54,6 +55,7 @@ resource "aws_iam_role_policy" "eks_autoscaling_policy" {
 resource "aws_iam_role_policy_attachment" "eks_cluster_EKSWorkerNodePolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
   role       = aws_iam_role.node_role.name
+  depends_on = [aws_iam_role.node_role]
 }
 
 # Attach the EKS CNI Policy to the role.
@@ -61,6 +63,7 @@ resource "aws_iam_role_policy_attachment" "eks_cluster_EKSWorkerNodePolicy" {
 resource "aws_iam_role_policy_attachment" "eks_cluster_EKS_CNI_Policy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
   role       = aws_iam_role.node_role.name
+  depends_on = [aws_iam_role.node_role]
 }
 
 # Attach the EC2 Container Registry Read Only Policy to this role.
@@ -68,4 +71,5 @@ resource "aws_iam_role_policy_attachment" "eks_cluster_EKS_CNI_Policy" {
 resource "aws_iam_role_policy_attachment" "eks_cluster_CR_ReadOnly_Policy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
   role       = aws_iam_role.node_role.name
+  depends_on = [aws_iam_role.node_role]
 }

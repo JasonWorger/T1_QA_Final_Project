@@ -26,6 +26,7 @@ resource "aws_iam_role" "cluster_role" {
 resource "aws_iam_role_policy_attachment" "eks_cluster_EKSClusterPolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
   role       = aws_iam_role.cluster_role.name
+  depends_on = [aws_iam_role.cluster_role]
 }
 
 # Attach the EKS Service Policy to the role.
@@ -33,6 +34,7 @@ resource "aws_iam_role_policy_attachment" "eks_cluster_EKSClusterPolicy" {
 resource "aws_iam_role_policy_attachment" "eks_cluster_EKSServicePolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
   role       = aws_iam_role.cluster_role.name
+  depends_on = [aws_iam_role.cluster_role]
 }
 
 # Optionally, enable Security Groups for Pods
@@ -41,4 +43,5 @@ resource "aws_iam_role_policy_attachment" "eks_cluster_EKSServicePolicy" {
 resource "aws_iam_role_policy_attachment" "example-AmazonEKSVPCResourceController" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSVPCResourceController"
   role       = aws_iam_role.cluster_role.name
+  depends_on = [aws_iam_role.cluster_role]
 }
