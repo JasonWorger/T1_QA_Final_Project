@@ -2,6 +2,8 @@
 
 The terraform IAM user requires the following permissions:
 
+AdministratorAccess
+AmazonEKSClusterPolicy
 AmazonEC2FullAccess
 VPCFullAccess
 IAMFullAccess

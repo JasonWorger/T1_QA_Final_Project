@@ -1,5 +1,9 @@
 # Amazon EKS requires subnets in at least two Availability Zones.
 
+data "aws_availability_zones" "available_zones" {
+  state = "available"
+}
+
 # Create a public subnet for our front end load balancers.
 # These will pass traffic onto pods in our private subnet.
 
@@ -7,6 +11,7 @@ resource "aws_subnet" "public_subnet" {
   vpc_id                  = var.vpc_id
   cidr_block              = var.public_cidr_block
   map_public_ip_on_launch = true
+  availability_zone = data.aws_availability_zones.available_zones.names[0]
 
   tags = {
     Name                                        = "${var.environment} - Public Subnet"
@@ -22,16 +27,13 @@ resource "aws_subnet" "private_eks_subnet" {
   vpc_id                  = var.vpc_id
   cidr_block              = var.private_eks_cidr_block
   map_public_ip_on_launch = false
+  availability_zone = data.aws_availability_zones.available_zones.names[1]
 
   tags = {
     Name                                        = "${var.environment} - Private EKS Subnet"
     Project                                     = "FP-T1"
     "kubernetes.io/cluster/${var.cluster_name}" = "shared" # Makes our VPC discoverable by kubernetes.
   }
-}
-
-data "aws_availability_zones" "available_zones" {
-  state = "available"
 }
 
 
