@@ -1,7 +1,7 @@
 # Create a configured RDS Instance.
 
 resource "aws_db_instance" "rds_instance" {
-  name = "${var.environment}-fp-database"
+  name = "${var.environment}FPdatabase"
 
   db_subnet_group_name   = var.db_subnet_group_name
   vpc_security_group_ids = [var.rds_sec_group_id]
