@@ -30,12 +30,18 @@ resource "aws_subnet" "private_eks_subnet" {
   }
 }
 
-# Create a second private subnet for our database instance.
+data "aws_subnet" "availability_zones" {
+  state = "available"
+}
+
+
+# Create a two private subnets for our database instance.
 
 resource "aws_subnet" "private_rds_subnet_az1" {
   vpc_id                  = var.vpc_id
   cidr_block              = var.private_rds_1_cidr_block
   map_public_ip_on_launch = false
+  availability_zone_id = data.aws_subnet.availability_zones.id[0]
 
   tags = {
     Name    = "${var.environment} - Private RDS Subnet AZ1"
@@ -47,13 +53,13 @@ resource "aws_subnet" "private_rds_subnet_az2" {
   vpc_id                  = var.vpc_id
   cidr_block              = var.private_rds_2_cidr_block
   map_public_ip_on_launch = false
+  availability_zone_id = data.aws_subnet.availability_zones.id[1]
 
   tags = {
     Name    = "${var.environment} - Private RDS Subnet AZ2"
     Project = "FP-T1"
   }
 }
-
 
 
 resource "aws_db_subnet_group" "rds_subnet_group" {
