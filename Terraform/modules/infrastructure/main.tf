@@ -79,6 +79,8 @@ module "EKS" {
 
   environment = var.environment
 
+  cluster_name = local.cluster_name
+
   eks_cluster_sec_group_id = module.SecurityGroups.k8s_controller_sec_group_id
   eks_node_sec_group_id    = module.SecurityGroups.k8s_node_sec_group_id
 

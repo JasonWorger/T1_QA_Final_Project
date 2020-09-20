@@ -18,6 +18,7 @@ resource "aws_eks_cluster" "eks_cluster" {
 # Add EKS Node Group to Cluster.
 
 resource "aws_eks_node_group" "eks_node_group" {
+  depends_on = [aws_eks_cluster.eks_cluster]
   cluster_name    = var.cluster_name
   node_group_name = "FP-T1_${var.environment}_Node_Group"
   node_role_arn   = var.eks_node_role_arn
