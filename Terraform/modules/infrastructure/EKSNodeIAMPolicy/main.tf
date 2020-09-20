@@ -31,17 +31,21 @@ resource "aws_iam_role_policy" "eks_autoscaling_policy" {
   role = aws_iam_role.node_role.id
 
   policy = jsonencode({
-    Effect = "Allow",
-    Resource = "*",
-    Action = [
-      "autoscaling:DescribeAutoScalingGroups",
-      "autoscaling:DescribeAutoScalingInstances",
-      "autoscaling:DescribeLaunchConfigurations",
-      "autoscaling:DescribeTags",
-      "autoscaling:SetDesiredCapacity",
-      "autoscaling:TerminateInstanceInAutoScalingGroup",
-      "ec2:DescribeLaunchTemplateVersions"
-    ]
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Effect = "Allow",
+        Resource = "*",
+        Action = [
+          "autoscaling:DescribeAutoScalingGroups",
+          "autoscaling:DescribeAutoScalingInstances",
+          "autoscaling:DescribeLaunchConfigurations",
+          "autoscaling:DescribeTags",
+          "autoscaling:SetDesiredCapacity",
+          "autoscaling:TerminateInstanceInAutoScalingGroup",
+          "ec2:DescribeLaunchTemplateVersions"
+        ]
+      }]
   })
 }
 
