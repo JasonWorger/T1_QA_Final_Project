@@ -7,7 +7,7 @@ maximum_node_group_size = 3
 desired_node_group_size = 1
 
 database_instance_class = "db.t2.small"
-db_root_password = "<NOT THE PASSWORD>"
+db_root_password = "NOTTHEPASSWORD"
 db_max_allocated_storage = 50
 
 controller_IP_CIDR = "0.0.0.0/0"

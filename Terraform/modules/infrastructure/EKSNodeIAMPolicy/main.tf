@@ -25,7 +25,8 @@ resource "aws_iam_role" "node_role" {
           "autoscaling:DescribeTags",
           "autoscaling:SetDesiredCapacity",
           "autoscaling:TerminateInstanceInAutoScalingGroup",
-          "ec2:DescribeLaunchTemplateVersions"
+          "ec2:DescribeLaunchTemplateVersions",
+          "sts:AssumeRole"
         ]
       }
     ]
