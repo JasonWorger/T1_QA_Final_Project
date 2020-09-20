@@ -4,6 +4,7 @@
 FROM maven:latest AS build-stage
 WORKDIR /build
 COPY . /build
+ADD spring-petclinic-rest/pom.xml /build
 RUN mvn clean package
 
 
