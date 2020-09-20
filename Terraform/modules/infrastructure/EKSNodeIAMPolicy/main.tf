@@ -1,5 +1,4 @@
 # Create an IAM Role to allow our EKS service to manage other AWS services.
-# Create an IAM Role which provides autoscaling permissions.
 
 resource "aws_iam_role" "node_role" {
   name        = "FP-T1_node_role-${var.environment}"
@@ -14,20 +13,6 @@ resource "aws_iam_role" "node_role" {
         Principal = {
           Service = "ec2.amazonaws.com"
         }
-      },
-      {
-        Effect = "Allow",
-        Resource = "*",
-        Action = [
-          "autoscaling:DescribeAutoScalingGroups",
-          "autoscaling:DescribeAutoScalingInstances",
-          "autoscaling:DescribeLaunchConfigurations",
-          "autoscaling:DescribeTags",
-          "autoscaling:SetDesiredCapacity",
-          "autoscaling:TerminateInstanceInAutoScalingGroup",
-          "ec2:DescribeLaunchTemplateVersions",
-          "sts:AssumeRole"
-        ]
       }
     ]
   })
@@ -36,6 +21,28 @@ resource "aws_iam_role" "node_role" {
     Name    = "${var.environment} - EKS Node Group Role"
     Project = "FP-T1"
   }
+}
+
+# Create an IAM Role policy which provides autoscaling permissions.
+
+resource "aws_iam_role_policy" "eks_autoscaling_policy" {
+
+  name = "${var.environment}_eks_autoscaling_policy"
+  role = aws_iam_role.node_role.id
+
+  policy = jsonencode({
+    Effect = "Allow",
+    Resource = "*",
+    Action = [
+      "autoscaling:DescribeAutoScalingGroups",
+      "autoscaling:DescribeAutoScalingInstances",
+      "autoscaling:DescribeLaunchConfigurations",
+      "autoscaling:DescribeTags",
+      "autoscaling:SetDesiredCapacity",
+      "autoscaling:TerminateInstanceInAutoScalingGroup",
+      "ec2:DescribeLaunchTemplateVersions"
+    ]
+  })
 }
 
 # Attach the EKS Worker Node Policy to the role.

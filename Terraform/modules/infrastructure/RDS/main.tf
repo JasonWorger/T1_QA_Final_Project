@@ -17,4 +17,6 @@ resource "aws_db_instance" "rds_instance" {
 
   username = "root"
   password = var.db_root_password
+
+  skip_final_snapshot = true  # So we can delete our RDS instance with Terraform.
 }
