@@ -1,5 +1,7 @@
 # Amazon EKS requires subnets in at least two Availability Zones.
 
+# https://docs.aws.amazon.com/eks/latest/userguide/create-public-private-vpc.html
+
 data "aws_availability_zones" "available_zones" {
   state = "available"
 }
@@ -7,30 +9,59 @@ data "aws_availability_zones" "available_zones" {
 # Create a public subnet for our front end load balancers.
 # These will pass traffic onto pods in our private subnet.
 
-resource "aws_subnet" "public_subnet" {
+resource "aws_subnet" "public_subnet_az_1" {
   vpc_id                  = var.vpc_id
-  cidr_block              = var.public_cidr_block
+  cidr_block              = var.public_cidr_block_az_1
   map_public_ip_on_launch = true
   availability_zone = data.aws_availability_zones.available_zones.names[0]
 
   tags = {
-    Name                                        = "${var.environment} - Public Subnet"
+    Name                                        = "${var.environment} - Public Subnet AZ1"
     Project                                     = "FP-T1"
     "kubernetes.io/cluster/${var.cluster_name}" = "shared" # Makes our VPC discoverable by kubernetes.
     "kubernetes.io/role/elb"                    = 1      # Indicates that this subnet is to be used for load balancing.
   }
 }
 
+resource "aws_subnet" "public_subnet_az_2" {
+  vpc_id                  = var.vpc_id
+  cidr_block              = var.public_cidr_block_az_2
+  map_public_ip_on_launch = true
+  availability_zone = data.aws_availability_zones.available_zones.names[1]
+
+  tags = {
+    Name                                        = "${var.environment} - Public Subnet AZ2"
+    Project                                     = "FP-T1"
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared" # Makes our VPC discoverable by kubernetes.
+    "kubernetes.io/role/elb"                    = 1      # Indicates that this subnet is to be used for load balancing.
+  }
+}
+
+
+
 # Create a private subnet for our secure containerised application.
 
-resource "aws_subnet" "private_eks_subnet" {
+resource "aws_subnet" "private_eks_subnet_1" {
   vpc_id                  = var.vpc_id
-  cidr_block              = var.private_eks_cidr_block
+  cidr_block              = var.private_eks_az_1_cidr_block
+  map_public_ip_on_launch = false
+  availability_zone = data.aws_availability_zones.available_zones.names[0]
+
+  tags = {
+    Name                                        = "${var.environment} - Private EKS Subnet AZ1"
+    Project                                     = "FP-T1"
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared" # Makes our VPC discoverable by kubernetes.
+  }
+}
+
+resource "aws_subnet" "private_eks_subnet_2" {
+  vpc_id                  = var.vpc_id
+  cidr_block              = var.private_eks_az_2_cidr_block
   map_public_ip_on_launch = false
   availability_zone = data.aws_availability_zones.available_zones.names[1]
 
   tags = {
-    Name                                        = "${var.environment} - Private EKS Subnet"
+    Name                                        = "${var.environment} - Private EKS Subnet AZ2"
     Project                                     = "FP-T1"
     "kubernetes.io/cluster/${var.cluster_name}" = "shared" # Makes our VPC discoverable by kubernetes.
   }

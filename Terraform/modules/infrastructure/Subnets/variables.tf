@@ -13,15 +13,28 @@ variable "vpc_id" {
   default     = "This variable must be defined at environment level."
 }
 
-variable "public_cidr_block" {
-  description = "The CIDR block belonging to our public subnet."
+variable "public_subnet_az_1_cidr_block" {
+  description = "The CIDR block belonging to our public subnet az 1."
   default     = "This variable must be defined at environment level."
 }
 
-variable "private_eks_cidr_block" {
-  description = "The CIDR block belonging to our private eks subnet."
+
+variable "public_subnet_az_2_cidr_block" {
+  description = "The CIDR block belonging to our public subnet az 2."
   default     = "This variable must be defined at environment level."
 }
+
+
+variable "private_eks_subnet_az_1_cidr_block" {
+  description = "The CIDR block belonging to our private eks subnet az 1."
+  default     = "This variable must be defined at environment level."
+}
+
+variable "private_eks_subnet_az_2_cidr_block" {
+  description = "The CIDR block belonging to our private eks subnet az 2."
+  default     = "This variable must be defined at environment level."
+}
+
 
 variable "private_rds_1_cidr_block" {
   description = "The CIDR block belonging to our private rds subnet."
