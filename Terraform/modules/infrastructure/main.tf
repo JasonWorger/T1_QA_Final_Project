@@ -93,6 +93,8 @@ module "EKS" {
   eks_cluster_role_arn = module.EKSClusterIAMPolicy.EKSClusterIAMPolicyARN
   eks_node_role_arn    = module.EKSNodeIAMPolicy.EKSNodeIAMPolicyARN
 
+  eks_node_instance_types = var.eks_node_instance_types
+
   desired_node_group_size = var.desired_node_group_size
   maximum_node_group_size = var.maximum_node_group_size
 }

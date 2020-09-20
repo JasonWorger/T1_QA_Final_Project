@@ -74,3 +74,8 @@ variable "ssh_key_pair_name" {
   description = "The name of our SSH key pair."
   default     = "This variable must be defined at environment level."
 }
+
+variable "eks_node_instance_types" {
+  description = "..."
+  default     = "This variable must be defined at environment level."
+}

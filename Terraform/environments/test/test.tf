@@ -12,6 +12,7 @@ variable "private_rds_1_cidr_block" {}
 variable "private_rds_2_cidr_block" {}
 variable "vpc_cidr_block" {}
 variable "ssh_key_pair_name" {}
+variable "eks_node_instance_types" {}
 
 provider "aws" {
   region = var.region
@@ -36,6 +37,8 @@ module "infrastructure" {
   # EKS Scaling Configuration
   maximum_node_group_size  = var.maximum_node_group_size
   desired_node_group_size  = var.desired_node_group_size
+
+  eks_node_instance_types  = var.eks_node_instance_types
 
   # Controller Machine Configuration
   controller_IP_CIDR       = var.controller_IP_CIDR
