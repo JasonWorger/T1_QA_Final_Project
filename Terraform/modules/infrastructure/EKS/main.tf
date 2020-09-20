@@ -5,6 +5,7 @@ resource "aws_eks_cluster" "eks_cluster" {
   role_arn = var.eks_cluster_role_arn
 
   vpc_config {
+    vpc_id             = var.vpc_id
     subnet_ids         = [var.public_subnet_id, var.private_eks_subnet_id]
     security_group_ids = [var.eks_cluster_sec_group_id]
   }

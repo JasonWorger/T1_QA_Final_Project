@@ -67,3 +67,8 @@ variable "cluster_name" {
   description = "The name of our cluster."
   default     = "This variable must be defined at environment level."
 }
+
+variable "vpc_id" {
+  description = "The amazon ID of our VPC."
+  default     = "This variable must be defined at environment level."
+}

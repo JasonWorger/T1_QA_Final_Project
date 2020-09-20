@@ -81,6 +81,8 @@ module "EKS" {
 
   cluster_name = local.cluster_name
 
+  vpc_id = module.VPC.vpc_id
+
   eks_cluster_sec_group_id = module.SecurityGroups.k8s_controller_sec_group_id
   eks_node_sec_group_id    = module.SecurityGroups.k8s_node_sec_group_id
 
