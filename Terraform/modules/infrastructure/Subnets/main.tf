@@ -30,7 +30,7 @@ resource "aws_subnet" "private_eks_subnet" {
   }
 }
 
-data "aws_subnet" "availability_zones" {
+data "aws_availability_zones" "available_zones" {
   state = "available"
 }
 
@@ -41,7 +41,7 @@ resource "aws_subnet" "private_rds_subnet_az1" {
   vpc_id                  = var.vpc_id
   cidr_block              = var.private_rds_1_cidr_block
   map_public_ip_on_launch = false
-  availability_zone_id = data.aws_subnet.availability_zones.id[0]
+  availability_zone = data.aws_availability_zones.available_zones.names[0]
 
   tags = {
     Name    = "${var.environment} - Private RDS Subnet AZ1"
@@ -53,7 +53,7 @@ resource "aws_subnet" "private_rds_subnet_az2" {
   vpc_id                  = var.vpc_id
   cidr_block              = var.private_rds_2_cidr_block
   map_public_ip_on_launch = false
-  availability_zone_id = data.aws_subnet.availability_zones.id[1]
+  availability_zone = data.aws_availability_zones.available_zones.names[1]
 
   tags = {
     Name    = "${var.environment} - Private RDS Subnet AZ2"
@@ -64,7 +64,7 @@ resource "aws_subnet" "private_rds_subnet_az2" {
 
 resource "aws_db_subnet_group" "rds_subnet_group" {
   name       = "${var.environment}-rds_subnet_group"
-  subnet_ids = [aws_subnet.private_rds_subnet_az1.id, aws_subnet.private_rds_subnet_az2]
+  subnet_ids = [aws_subnet.private_rds_subnet_az1.id, aws_subnet.private_rds_subnet_az2.id]
 
   tags = {
     Name    = "${var.environment} - Private RDS Subnet Group"
