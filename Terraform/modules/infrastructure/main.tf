@@ -27,7 +27,6 @@ module "Subnets" {
   source = "./Subnets"
 
   environment = var.environment
-
   vpc_id = module.VPC.vpc_id
 
   public_cidr_block      = var.public_cidr_block
@@ -36,6 +35,18 @@ module "Subnets" {
   private_rds_2_cidr_block = var.private_rds_2_cidr_block
 
   cluster_name = local.cluster_name
+}
+
+# Create Internet Gateway & Routes
+
+module "RTandIG" {
+  source = "./RTandIG"
+
+  environment = var.environment
+  vpc_id = module.VPC.vpc_id
+
+  private_eks_subnet_id = module.Subnets.private_eks_subnet_id
+  public_subnet_id = module.Subnets.public_subnet_id
 }
 
 # Configure Network Access Control.
