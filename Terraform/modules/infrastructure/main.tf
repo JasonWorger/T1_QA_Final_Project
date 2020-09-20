@@ -13,7 +13,7 @@ locals {
 
 # Create VPC.
 module "VPC" {
-  source = "VPC"
+  source = "./VPC"
 
   environment    = var.environment
 
@@ -24,7 +24,7 @@ module "VPC" {
 
 # Create Subnets within our VPC.
 module "Subnets" {
-  source = "Subnets"
+  source = "./Subnets"
 
   environment = var.environment
 
@@ -43,7 +43,7 @@ module "Subnets" {
 # Configure Security Groups.
 
 module "SecurityGroups" {
-  source = "SecurityGroups"
+  source = "./SecurityGroups"
 
   environment = var.environment
 
@@ -60,21 +60,21 @@ module "SecurityGroups" {
 # Before you can launch nodes and register them into a cluster, you must create an IAM role for those nodes.
 
 module "EKSClusterIAMPolicy" {
-  source = "EKSClusterIAMPolicy"
+  source = "./EKSClusterIAMPolicy"
 
   environment = var.environment
 }
 
 # Before you can create Amazon EKS clusters, you must create an EKS IAM role for them.
 module "EKSNodeIAMPolicy" {
-  source = "EKSNodeIAMPolicy"
+  source = "./EKSNodeIAMPolicy"
 
   environment = var.environment
 }
 
 # Create Cluster. Depends on IAM roles!
 module "EKS" {
-  source     = "EKS"
+  source     = "./EKS"
   depends_on = [module.EKSClusterIAMPolicy, module.EKSNodeIAMPolicy]
 
   environment = var.environment
@@ -97,7 +97,7 @@ module "EKS" {
 
 # Create RDS.
 module "RDS" {
-  source = "RDS"
+  source = "./RDS"
 
   environment = var.environment
 
