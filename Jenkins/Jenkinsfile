@@ -14,7 +14,7 @@ pipeline {
         stage('Hardware - Terraform'){
             steps{
                 //Call script here
-                sh 'scripts/install_terraform.sh'
+                sh 'scripts/install_dependencies.sh'
                 sh 'scripts/terraform_testing_env.sh'
             }
         }
