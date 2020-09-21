@@ -6,4 +6,4 @@ cd Terraform/environments/test
 
 terraform init
 
-terraform destroy --var-file=test.tfvars -auto-approve
+terraform destroy -auto-approve --var-file=test.tfvars
