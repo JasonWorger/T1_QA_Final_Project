@@ -15,7 +15,7 @@ pipeline {
             steps{
                 //Call script here
                 sh 'scripts/install_terraform.sh'
-                sh 'scripts/terraform.sh'
+                sh 'scripts/terraform_testing_env.sh'
             }
         }
 
