@@ -10,4 +10,4 @@ terraform fmt
 
 terraform plan --var-file=test.tfvars -out=testplan
 
-terraform terraform apply "testplan"
+terraform apply "testplan"
