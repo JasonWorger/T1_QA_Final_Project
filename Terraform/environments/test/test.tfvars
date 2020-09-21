@@ -12,7 +12,7 @@ database_instance_class = "db.t2.micro"
 db_root_password = "NOTTHEPASSWORD"
 db_max_allocated_storage = 20
 
-controller_IP_CIDR = "3.251.73.14/32"
+controller_IP_CIDR = "0.0.0.0/0"
 
 vpc_cidr_block = "12.0.0.0/16"
 

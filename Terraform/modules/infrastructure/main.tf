@@ -81,6 +81,7 @@ module "SecurityGroups" {
 # Create RDS.
 module "RDS" {
   source = "./RDS"
+  depends_on = [module.SecurityGroups, module.Subnets, module.VPC]
 
   environment = var.environment
 
