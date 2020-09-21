@@ -6,6 +6,9 @@ resource "aws_db_instance" "rds_instance" {
   db_subnet_group_name   = var.db_subnet_group_name
   vpc_security_group_ids = [var.rds_sec_group_id]
 
+  multi_az = true
+  publicly_accessible = true
+
   allocated_storage     = 10
   max_allocated_storage = var.db_max_allocated_storage # Defining this enables storage Autoscaling.
   storage_type          = "gp2"                        # General Purpose SSD.

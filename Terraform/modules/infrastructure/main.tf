@@ -26,6 +26,8 @@ module "VPC" {
 module "Subnets" {
   source = "./Subnets"
 
+  depends_on = [module.VPC]
+
   environment = var.environment
   cluster_name = local.cluster_name
 
@@ -48,6 +50,7 @@ module "Subnets" {
 
 module "Routing" {
   source = "./Routing"
+  depends_on = [module.VPC, module.Subnets]
 
   environment = var.environment
 
@@ -68,6 +71,7 @@ module "Routing" {
 
 module "SecurityGroups" {
   source = "./SecurityGroups"
+  depends_on = [module.Routing, module.VPC, module.Subnets]
 
   environment = var.environment
   cluster_name = local.cluster_name
@@ -81,7 +85,7 @@ module "SecurityGroups" {
 # Create RDS.
 module "RDS" {
   source = "./RDS"
-  depends_on = [module.SecurityGroups, module.Subnets, module.VPC]
+  depends_on = [module.SecurityGroups, module.Subnets, module.VPC, module.Routing]
 
   environment = var.environment
 
@@ -112,7 +116,7 @@ module "EKSNodeIAMPolicy" {
 # Create Cluster. Depends on IAM roles!
 module "EKS" {
   source     = "./EKS"
-  depends_on = [module.EKSClusterIAMPolicy, module.EKSNodeIAMPolicy]
+  depends_on = [module.EKSClusterIAMPolicy, module.EKSNodeIAMPolicy, module.VPC, module.Subnets, module.SecurityGroups, module.Routing]
 
   environment = var.environment
 
