@@ -17,7 +17,7 @@ controller_IP_CIDR = "0.0.0.0/0"
 vpc_cidr_block = "12.0.0.0/16"
 
 public_subnet_az_1_cidr_block = "12.0.1.0/24"
-public_subnet_az_1_cidr_block = "12.1.1.0/24"
+public_subnet_az_2_cidr_block = "12.1.1.0/24"
 
 private_eks_subnet_az_1_cidr_block = "12.0.2.0/24"
 private_eks_subnet_az_2_cidr_block = "12.1.2.0/24"
