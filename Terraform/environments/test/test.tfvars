@@ -6,7 +6,7 @@ ssh_key_pair_name = "aws_key"
 maximum_node_group_size = 2
 desired_node_group_size = 1
 
-eks_node_instance_types = "t3.micro"
+eks_node_instance_types = "t3.small"
 
 database_instance_class = "db.t2.micro"
 db_root_password = "NOTTHEPASSWORD"
