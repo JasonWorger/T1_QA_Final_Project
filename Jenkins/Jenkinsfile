@@ -32,8 +32,8 @@ pipeline {
             steps{
                 sh 'Jenkins/scripts/install_terraform_dependencies.sh'
                 sh 'Jenkins/scripts/aws_cli_config.sh'
-                //sh 'Jenkins/scripts/terraform_destroy_testing_env.sh'
-                sh 'Jenkins/scripts/terraform_testing_env.sh'
+                sh 'Jenkins/scripts/terraform_destroy_testing_env.sh'
+                //sh 'Jenkins/scripts/terraform_testing_env.sh'
             }
         }
 
