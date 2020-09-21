@@ -1,5 +1,11 @@
 pipeline {
     agent any
+
+    environment {
+        AWS_ACCESS_KEY_ID = 'true'
+        AWS_SECRET_ACCESS_KEY = 'sqlite'
+
+
     stages {
 
         /* Begin Template
