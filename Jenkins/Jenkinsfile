@@ -51,6 +51,7 @@ pipeline {
             steps{
                 //Call script here
                 sh 'scripts/testing_env_kubernetes_script.sh'
+                sh 'testing_pods.sh'
             }
         }
     }
