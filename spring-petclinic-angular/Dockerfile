@@ -2,7 +2,6 @@ ARG DOCKER_HUB="docker.io"
 
 FROM $DOCKER_HUB/library/node:10.10-alpine as build
 
-
 COPY . /workspace/
 
 ARG NPM_REGISTRY=" https://registry.npmjs.org"
