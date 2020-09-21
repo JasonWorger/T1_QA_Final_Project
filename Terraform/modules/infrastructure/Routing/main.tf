@@ -121,3 +121,26 @@ resource "aws_route_table_association" "eks_private_route_table_2_asc" {
   route_table_id = aws_route_table.eks_private_route_table_2.id
   subnet_id = var.private_eks_subnet_az_2_id
 }
+
+# ----- RDS ROUTE TABLE -----
+
+# Create Route Table, destination cidr 0.0.0.0/0 to Internet Gateway
+
+resource "aws_route_table" "rds_route_table" {
+  vpc_id = var.vpc_id
+
+  route {
+    gateway_id = aws_internet_gateway.internet_gateway.id
+    cidr_block = "0.0.0.0/0"
+  }
+
+  tags = {
+    Name    = "${var.environment} - RDS Route Table"
+    Project = "FP-T1"
+  }
+}
+
+resource "aws_route_table_association" "eks_private_route_table_2_asc" {
+  route_table_id = aws_route_table.rds_route_table.id
+  subnet_id = var.rds_subnet_group_id
+}

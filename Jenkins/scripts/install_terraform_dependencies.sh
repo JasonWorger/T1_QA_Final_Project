@@ -2,7 +2,7 @@
 
 sudo apt update && sudo apt upgrade -y
 
-sudo apt install -y wget unzip curl apt-transport-https gnupg2
+sudo apt install -y wget unzip curl apt-transport-https gnupg2 mysql-client-core-8.0
 
 # Install AWS CLI
 

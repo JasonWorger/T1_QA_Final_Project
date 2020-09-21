@@ -63,6 +63,8 @@ module "Routing" {
 
   public_subnet_az_1_id = module.Subnets.public_subnet_az1_id
   public_subnet_az_2_id = module.Subnets.public_subnet_az2_id
+
+  rds_subnet_group_id = module.Subnets.rds_subnet_group_id
 }
 
 # Configure Network Access Control.
