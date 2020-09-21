@@ -22,38 +22,38 @@ pipeline {
         stage('Hardware - Terraform'){
             steps{
                 //Call script here
-                sh 'scripts/install_terraform_dependencies.sh'
-                sh 'scrips/aws_cli_config.sh'
-                sh 'scripts/terraform_testing_env.sh'
+                sh 'Jenkins/scripts/install_terraform_dependencies.sh'
+                sh 'Jenkins/scripts/aws_cli_config.sh'
+                sh 'Jenkins/scripts/terraform_testing_env.sh'
             }
         }
 
         stage('Software - Ansible'){
             steps{
                 //Call script here
-                sh 'scripts/ansible.sh'
+                sh 'Jenkins/scripts/ansible.sh'
             }
         }
 
         stage('Test software'){
             steps{
                 //Call script here
-                sh 'scripts/test_software.sh'
+                sh 'Jenkins/scripts/test_software.sh'
             }
         }
 
         stage('Dockerfy and artifact'){
             steps{
                 //Call script here
-                sh 'scripts/artifact.sh'
+                sh 'Jenkins/scripts/artifact.sh'
             }
         }
 
         stage('Deploy images'){
             steps{
                 //Call script here
-                sh 'scripts/testing_env_kubernetes_script.sh'
-                sh 'testing_pods.sh'
+                sh 'Jenkins/scripts/testing_env_kubernetes_script.sh'
+                sh 'Jenkins/scripts/testing_pods.sh'
             }
         }
     }
