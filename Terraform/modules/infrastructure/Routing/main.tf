@@ -51,8 +51,10 @@ resource "aws_eip" "eip_nat_gateway_az_1" {
 # Create a NAT Gateway for Public AZ 1.
 
 resource "aws_nat_gateway" "nat_gateway_az_1" {
-  allocation_id = aws_eip.eip_nat_gateway_az_1.allocation_id
+  allocation_id = aws_eip.eip_nat_gateway_az_1.id
   subnet_id = var.public_subnet_az_1_id
+
+  depends_on = [aws_eip.eip_nat_gateway_az_1]
 }
 
 # Create an Elastic IP for NAT Gateway AZ 2.
@@ -64,8 +66,10 @@ resource "aws_eip" "eip_nat_gateway_az_2" {
 # Create a NAT Gateway for Public AZ 1.
 
 resource "aws_nat_gateway" "nat_gateway_az_2" {
-  allocation_id = aws_eip.eip_nat_gateway_az_2.allocation_id
+  allocation_id = aws_eip.eip_nat_gateway_az_2.id
   subnet_id = var.public_subnet_az_2_id
+
+  depends_on = [aws_eip.eip_nat_gateway_az_2]
 }
 
 # ----- PRIVATE ROUTE TABLE 1 -----
