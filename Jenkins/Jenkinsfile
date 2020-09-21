@@ -15,6 +15,7 @@ pipeline {
             steps{
                 //Call script here
                 sh 'scripts/install_dependencies.sh'
+                sh 'scrips/aws_cli_config.sh'
                 sh 'scripts/terraform_testing_env.sh'
             }
         }
