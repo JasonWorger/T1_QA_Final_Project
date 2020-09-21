@@ -34,3 +34,4 @@ spec:
   - port: 9966
     targetPort: 9966
     protocol: TCP
+  type: ClusterIP
