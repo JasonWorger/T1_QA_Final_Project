@@ -26,6 +26,4 @@ curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.9/2020-08-04/
 
 chmod +x ./kubectl
 
-mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
-
-echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
+sudo mv ./kubectl /usr/local/bin/kubectl
