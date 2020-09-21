@@ -2,7 +2,7 @@
 
 # Test Environment
 
-cd ~/Terraform/environments/test
+cd ~/T1_QA_Final_Project/Terraform/environments/test
 
 terraform init
 
