@@ -1,7 +1,7 @@
 environment = "production"
 region = "eu-west-1"
 
-ssh_key_pair_name = "asbandia-key-pair"
+ssh_key_pair_name = "aws_key"
 
 maximum_node_group_size = 4
 desired_node_group_size = 1
