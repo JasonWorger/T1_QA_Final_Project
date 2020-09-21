@@ -18,12 +18,15 @@ pipeline {
         }
         End template*/
 
+/*
+
         stage('Test software'){
             steps{
                 sh 'Jenkins/scripts/test_software.sh'
             }
         }
 
+*/
 
         stage('Hardware - Terraform'){
             steps{
