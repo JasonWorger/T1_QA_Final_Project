@@ -3,8 +3,6 @@
 resource "aws_db_instance" "rds_instance" {
   name = "${var.environment}FPdatabase"
 
-  publicly_accessible = true  # Only accessible to files in our VPC due to sec group.
-
   db_subnet_group_name   = var.db_subnet_group_name
   vpc_security_group_ids = [var.rds_sec_group_id]
 
