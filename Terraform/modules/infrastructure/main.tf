@@ -78,6 +78,21 @@ module "SecurityGroups" {
 
 }
 
+# Create RDS.
+module "RDS" {
+  source = "./RDS"
+
+  environment = var.environment
+
+  db_subnet_group_name = module.Subnets.rds_subnet_name
+  rds_sec_group_id     = module.SecurityGroups.rds_sec_group_id
+
+  database_instance_class = var.database_instance_class
+
+  db_root_password         = var.db_root_password
+  db_max_allocated_storage = var.db_max_allocated_storage
+}
+
 # Before you can launch nodes and register them into a cluster, you must create an IAM role for those nodes.
 
 module "EKSClusterIAMPolicy" {
@@ -120,19 +135,4 @@ module "EKS" {
 
   desired_node_group_size = var.desired_node_group_size
   maximum_node_group_size = var.maximum_node_group_size
-}
-
-# Create RDS.
-module "RDS" {
-  source = "./RDS"
-
-  environment = var.environment
-
-  db_subnet_group_name = module.Subnets.rds_subnet_name
-  rds_sec_group_id     = module.SecurityGroups.rds_sec_group_id
-
-  database_instance_class = var.database_instance_class
-
-  db_root_password         = var.db_root_password
-  db_max_allocated_storage = var.db_max_allocated_storage
 }

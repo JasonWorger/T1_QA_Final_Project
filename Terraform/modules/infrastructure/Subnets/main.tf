@@ -76,7 +76,7 @@ resource "aws_subnet" "private_eks_subnet_2" {
 resource "aws_subnet" "private_rds_subnet_az1" {
   vpc_id                  = var.vpc_id
   cidr_block              = var.private_rds_1_cidr_block
-  map_public_ip_on_launch = false
+  map_public_ip_on_launch = true
   availability_zone = data.aws_availability_zones.available_zones.names[0]
 
   tags = {
@@ -88,7 +88,7 @@ resource "aws_subnet" "private_rds_subnet_az1" {
 resource "aws_subnet" "private_rds_subnet_az2" {
   vpc_id                  = var.vpc_id
   cidr_block              = var.private_rds_2_cidr_block
-  map_public_ip_on_launch = false
+  map_public_ip_on_launch = true
   availability_zone = data.aws_availability_zones.available_zones.names[1]
 
   tags = {
