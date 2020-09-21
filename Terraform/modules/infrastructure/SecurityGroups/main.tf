@@ -1,3 +1,5 @@
+# ----- RDS SECURITY GROUPS -----
+
 # Create an RDS security group.
 
 resource "aws_security_group" "rds_sec_group" {
@@ -47,6 +49,8 @@ resource "aws_security_group_rule" "rds_dev_communication" {
   security_group_id = aws_security_group.rds_sec_group.id # The security group to apply this rule to.
   cidr_blocks       = [var.controller_IP_CIDR]            # The IP CIDR to allow access from.
 }
+
+# ----- CLUSTER SECURITY GROUP -----
 
 # https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html
 

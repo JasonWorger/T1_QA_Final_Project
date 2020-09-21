@@ -6,8 +6,10 @@ variable "database_instance_class" {}
 variable "db_root_password" {}
 variable "db_max_allocated_storage" {}
 variable "controller_IP_CIDR" {}
-variable "public_cidr_block" {}
-variable "private_eks_cidr_block" {}
+variable "public_subnet_az_1_cidr_block" {}
+variable "public_subnet_az_2_cidr_block" {}
+variable "private_eks_subnet_az_1_cidr_block" {}
+variable "private_eks_subnet_az_2_cidr_block" {}
 variable "private_rds_1_cidr_block" {}
 variable "private_rds_2_cidr_block" {}
 variable "vpc_cidr_block" {}
@@ -26,8 +28,12 @@ module "infrastructure" {
   vpc_cidr_block = var.vpc_cidr_block
 
   # Subnet Config
-  public_cidr_block        = var.public_cidr_block
-  private_eks_cidr_block   = var.private_eks_cidr_block
+  public_subnet_az_1_cidr_block = var.public_subnet_az_1_cidr_block
+  public_subnet_az_2_cidr_block = var.public_subnet_az_2_cidr_block
+
+  private_eks_subnet_az_1_cidr_block = var.private_eks_subnet_az_1_cidr_block
+  private_eks_subnet_az_2_cidr_block = var.private_eks_subnet_az_2_cidr_block
+
   private_rds_1_cidr_block = var.private_rds_1_cidr_block
   private_rds_2_cidr_block = var.private_rds_2_cidr_block
 

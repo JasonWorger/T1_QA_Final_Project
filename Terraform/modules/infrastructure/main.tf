@@ -13,13 +13,13 @@ locals {
 
 # Create VPC.
 module "VPC" {
-  source = "./VPC"
+  source = "./VPC"  # Where our module is located.
 
-  environment    = var.environment
+  environment    = var.environment  # Our runtime environment.
+  cluster_name   = local.cluster_name  # The name of our EKS Cluster
 
-  vpc_cidr_block = var.vpc_cidr_block
+  vpc_cidr_block = var.vpc_cidr_block  # The VPCs CIDR block.
 
-  cluster_name   = local.cluster_name
 }
 
 # Create Subnets within our VPC.
@@ -27,26 +27,39 @@ module "Subnets" {
   source = "./Subnets"
 
   environment = var.environment
-  vpc_id = module.VPC.vpc_id
+  cluster_name = local.cluster_name
 
-  public_cidr_block      = var.public_cidr_block
-  private_eks_cidr_block = var.private_eks_cidr_block
+  vpc_id = module.VPC.vpc_id  # The AWS ID of our VPC
+
+  # ----- SUBNET CIDR BLOCKS -----
+
+  private_eks_subnet_az_1_cidr_block = var.private_eks_subnet_az_1_cidr_block
+  private_eks_subnet_az_2_cidr_block = var.private_eks_subnet_az_2_cidr_block
+
+  public_subnet_az_1_cidr_block = var.public_subnet_az_1_cidr_block
+  public_subnet_az_2_cidr_block = var.public_subnet_az_2_cidr_block
+
   private_rds_1_cidr_block = var.private_rds_1_cidr_block
   private_rds_2_cidr_block = var.private_rds_2_cidr_block
 
-  cluster_name = local.cluster_name
 }
 
-# Create Internet Gateway & Routes
+# Create Internet Gateway, NAT, and Routes
 
-module "RTandIG" {
-  source = "./RTandIG"
+module "Routing" {
+  source = "./Routing"
 
   environment = var.environment
+
+  # ----- ROUTING IDs -----
+
   vpc_id = module.VPC.vpc_id
 
-  private_eks_subnet_id = module.Subnets.private_eks_subnet_id
-  public_subnet_id = module.Subnets.public_subnet_id
+  private_eks_subnet_az_1_id = module.Subnets.private_eks_subnet_az1_id
+  private_eks_subnet_az_2_id = module.Subnets.private_eks_subnet_az2_id
+
+  public_subnet_az_1_id = module.Subnets.public_subnet_az1_id
+  public_subnet_az_2_id = module.Subnets.public_subnet_az2_id
 }
 
 # Configure Network Access Control.
@@ -57,15 +70,12 @@ module "SecurityGroups" {
   source = "./SecurityGroups"
 
   environment = var.environment
+  cluster_name = local.cluster_name
 
   vpc_id = module.VPC.vpc_id
 
-  private_eks_subnet_id = module.Subnets.private_eks_subnet_id
-  public_subnet_id      = module.Subnets.public_subnet_id
+  controller_IP_CIDR = var.controller_IP_CIDR  # The IP address of our controller computer.
 
-  controller_IP_CIDR = var.controller_IP_CIDR
-
-  cluster_name = local.cluster_name
 }
 
 # Before you can launch nodes and register them into a cluster, you must create an IAM role for those nodes.
@@ -97,9 +107,11 @@ module "EKS" {
 
   ssh_key_pair_name = var.ssh_key_pair_name
 
-  private_eks_subnet_id = module.Subnets.private_eks_subnet_id
-  public_subnet_id      = module.Subnets.public_subnet_id
+  private_eks_subnet_az1_id = module.Subnets.private_eks_subnet_az1_id
+  private_eks_subnet_az2_id = module.Subnets.private_eks_subnet_az2_id
 
+  public_subnet_az1_id = module.Subnets.public_subnet_az1_id
+  public_subnet_az2_id = module.Subnets.public_subnet_az2_id
 
   eks_cluster_role_arn = module.EKSClusterIAMPolicy.EKSClusterIAMPolicyARN
   eks_node_role_arn    = module.EKSNodeIAMPolicy.EKSNodeIAMPolicyARN
