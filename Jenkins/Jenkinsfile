@@ -32,21 +32,21 @@ pipeline {
         stage('Software - Ansible'){
             steps{
                 //Call script here
-                sh 'Jenkins/scripts/ansible.sh'
+                //sh 'Jenkins/scripts/ansible.sh'
             }
         }
 
         stage('Test software'){
             steps{
                 //Call script here
-                sh 'Jenkins/scripts/test_software.sh'
+                //sh 'Jenkins/scripts/test_software.sh'
             }
         }
 
         stage('Dockerfy and artifact'){
             steps{
                 //Call script here
-                sh 'Jenkins/scripts/artifact.sh'
+                //sh 'Jenkins/scripts/artifact.sh'
             }
         }
 
