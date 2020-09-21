@@ -50,7 +50,7 @@ pipeline {
         stage('Deploy images'){
             steps{
                 //Call script here
-                sh 'scripts/deploy.sh'
+                sh 'scripts/testing_env_kubernetes_script.sh'
             }
         }
     }
