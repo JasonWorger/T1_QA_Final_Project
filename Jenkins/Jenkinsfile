@@ -8,11 +8,13 @@ pipeline {
                 sh 'scripts'
             }
         }
-        End template*/ 
+        End template*/
+
 
         stage('Hardware - Terraform'){
             steps{
                 //Call script here
+                sh 'scripts/install_terraform.sh'
                 sh 'scripts/terraform.sh'
             }
         }
