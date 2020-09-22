@@ -9,7 +9,7 @@ desired_node_group_size = 1
 eks_node_instance_types = "t3.medium"
 
 database_instance_class = "db.t2.small"
-db_root_password = "NOTTHEPASSWORD"
+DB_ROOT_PASSWORD = "NOTTHEPASSWORD"
 db_max_allocated_storage = 100
 
 controller_IP_CIDR = "3.251.73.14/32"

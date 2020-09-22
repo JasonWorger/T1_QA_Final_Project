@@ -97,7 +97,7 @@ module "RDS" {
 
   database_instance_class = var.database_instance_class
 
-  db_root_password         = var.db_root_password
+  db_root_password         = var.DB_ROOT_PASSWORD
   db_max_allocated_storage = var.db_max_allocated_storage
 }
 

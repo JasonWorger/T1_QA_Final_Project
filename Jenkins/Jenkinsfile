@@ -4,8 +4,7 @@ pipeline {
     environment {
         AWS_ACCESS_KEY_ID = credentials('ACCESS_KEY')
         AWS_SECRET_ACCESS_KEY = credentials('SECRET_ACCESS_KEY')
-        DATABASE_PASSWORD = 'NOTTHEPASSWORD'
-        DATABASE_PASSWORD = credentials('DATABASE_PASSWORD')
+        TF_VAR_DB_ROOT_PASSWORD = credentials('DATABASE_PASSWORD')
         //DOCKER_USERNAME = credentials('DOCKER_USERNAME')
         //DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
 

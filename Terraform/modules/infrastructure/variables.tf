@@ -22,7 +22,7 @@ variable "database_instance_class" {
 }
 
 
-variable "db_root_password" {
+variable "DB_ROOT_PASSWORD" {
   description = "The root password of our database."
   default     = "This variable must be defined on runtime."
 }
