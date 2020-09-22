@@ -2,6 +2,14 @@
 
 cd Terraform/environments/test
 
-#variable=$(terraform output rds_endpoint)
+echo "Adding the Terraform output"
 
-export TESTING_RDS_ENDPOINT=$(terraform output rds_endpoint)
+variable=$(terraform output rds_endpoint)
+
+echo "exporting the terraform variable..."
+
+export TESTING_RDS_ENDPOINT=$variable
+
+echo " The env variable TESTING_RDS_ENDPOINT IS..."
+
+echo $TESTING_RDS_ENDPOINT
