@@ -3,16 +3,16 @@ ARG DOCKER_HUB="docker.io"
 FROM $DOCKER_HUB/library/node:10.10-alpine as build
 
 
-COPY ../../spring-petclinic-angular /workspace/
+COPY spring-petclinic-angular /workspace/
 
 ARG NPM_REGISTRY=" https://registry.npmjs.org"
 
-RUN echo "registry = \"$NPM_REGISTRY\"" > /workspace/.npmrc                              && \
+RUN echo "registry = \'$NPM_REGISTRY\'" > /workspace/.npmrc                              && \
     cd /workspace/                                                                       && \
     npm install                                                                          && \
     npm run build
 
-ARG NGINX_VERSION="1.17.6"
+ARG NGINX_VERSION="1.19.2"
 FROM $DOCKER_HUB/library/nginx:$NGINX_VERSION AS runtime
 
 

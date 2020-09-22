@@ -3,7 +3,7 @@
 
 FROM maven:latest AS build-stage
 WORKDIR /build
-COPY ../../spring-petclinic-rest /build
+COPY spring-petclinic-rest /build
 RUN mvn clean package
 
 

@@ -30,7 +30,7 @@ docker-compose build
 
 # Login with our docker credentials.
 
-sudo docker login
+sudo docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
 # Push our built images to docker
 
