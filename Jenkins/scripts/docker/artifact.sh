@@ -4,12 +4,21 @@
 sudo apt-get install openjdk-8-jre maven default-jre
 
 cd docker
+
 echo "cd into docker"
+echo "The working directory is:"
+pwd
+
 # Remove our previous images.
 docker-compose down --rmi all
 echo "Removed images"
-# Clone Angular Repository.
 
+# Removing previous git repos.
+
+sudo rm -rf spring-petclinic-angular
+sudo rm -rf spring-petclinic-rest
+
+# Clone Angular Repository.
 git clone https://github.com/spring-petclinic/spring-petclinic-angular.git
 echo "cloned angular"
 # Clone REST Repository.
