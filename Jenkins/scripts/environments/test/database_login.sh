@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# Echo the RDS Endpoint
+
+echo $TESTING_RDS_ENDPOINT
+
 # Make a temporary directory.
 
 mkdir database_temp && cd database_temp
@@ -15,9 +19,9 @@ cp spring-petclinic-rest/src/main/resources/db/mysql/populateDB.sql .
 
 # Run our files on mysql.
 
-mysql --host=$RDS_ENDPOINT --port=3306 --user=root --password=$TF_VAR_DB_ROOT_PASSWORD < initDB.sql
+mysql --host=$TESTING_RDS_ENDPOINT --port=3306 --user=root --password=$TF_VAR_DB_ROOT_PASSWORD < initDB.sql
 
-mysql --host=$RDS_ENDPOINT --port=3306 --user=root --password=$TF_VAR_DB_ROOT_PASSWORD petclinic < populateDB.sql
+mysql --host=$TESTING_RDS_ENDPOINT --port=3306 --user=root --password=$TF_VAR_DB_ROOT_PASSWORD petclinic < populateDB.sql
 
 # Clean up.
 
