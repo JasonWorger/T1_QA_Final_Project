@@ -27,7 +27,6 @@ pipeline {
                 sh 'Jenkins/scripts/test_software.sh'
             }
         }
-
 */
 
         stage('Hardware - Terraform'){
