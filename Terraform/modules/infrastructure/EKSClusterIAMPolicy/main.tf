@@ -40,8 +40,14 @@ resource "aws_iam_role_policy_attachment" "eks_cluster_EKSServicePolicy" {
 # Optionally, enable Security Groups for Pods
 # Reference: https://docs.aws.amazon.com/eks/latest/userguide/security-groups-for-pods.html
 
-resource "aws_iam_role_policy_attachment" "example-AmazonEKSVPCResourceController" {
+resource "aws_iam_role_policy_attachment" "AmazonEKSVPCResourceController" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSVPCResourceController"
+  role       = aws_iam_role.cluster_role.name
+  depends_on = [aws_iam_role.cluster_role]
+}
+
+resource "aws_iam_role_policy_attachment" "CloudWatchLogsFullAccess" {
+  policy_arn = "arn:aws:iam::aws:policy/CloudWatchLogsFullAccess"
   role       = aws_iam_role.cluster_role.name
   depends_on = [aws_iam_role.cluster_role]
 }
