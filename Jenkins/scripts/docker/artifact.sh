@@ -10,7 +10,8 @@ echo "The working directory is:"
 pwd
 
 # Remove our previous images.
-docker-compose down --rmi all
+sudo docker-compose down --rmi all
+
 echo "Removed images"
 
 # Removing previous git repos.
@@ -36,7 +37,7 @@ sudo cp Dockerfiles/PetClinicAngular/.dockerignore spring-petclinic-angular
 
 # Run docker-compose.
 echo "About to build containers"
-docker-compose build
+sudo docker-compose build
 echo "Built containers"
 # Login with our docker credentials.
 
