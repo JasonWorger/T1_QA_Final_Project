@@ -54,3 +54,7 @@ module "infrastructure" {
   DB_ROOT_PASSWORD = var.DB_ROOT_PASSWORD
   db_max_allocated_storage = var.db_max_allocated_storage
 }
+
+output "rds_endpoint" {
+  value = module.infrastructure.rds_endpoint
+}
