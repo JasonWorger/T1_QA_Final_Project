@@ -4,7 +4,7 @@
       backend:
         image: team1qa/backend:latest
         build:
-          context:
+          context: .
           dockerfile: spring-petclinic-rest/Dockerfile
         ports:
           - target: 9966
@@ -13,7 +13,7 @@
       frontend:
         image: team1qa/frontend:latest
         build:
-          context:
+          context: .
           dockerfile: spring-petclinic-angular/Dockerfile
         ports:
         - target: 4200
