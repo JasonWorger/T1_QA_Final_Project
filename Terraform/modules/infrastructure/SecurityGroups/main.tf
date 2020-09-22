@@ -110,6 +110,18 @@ resource "aws_security_group_rule" "cluster_controller_pod_communication_HTTPS" 
   source_security_group_id = aws_security_group.k8s_node_sec_group.id       # The security group to allow access from.
 }
 
+resource "aws_security_group_rule" "cluster_controller_pod_communication_LOGS" {
+  description = "Allow our pods to communicate with the kubernetes API Server over 10250."
+
+  type = "ingress"
+
+  from_port = 10250
+  to_port   = 10250
+  protocol  = "tcp"
+
+  security_group_id        = aws_security_group.k8s_controller_sec_group.id # The security group to apply this rule to.
+  source_security_group_id = aws_security_group.k8s_node_sec_group.id       # The security group to allow access from.
+}
 
 resource "aws_security_group_rule" "cluster_controller_developer_communication_HTTPS" {
   description = "Allow our development machine to communicate with the cluster API Server."
