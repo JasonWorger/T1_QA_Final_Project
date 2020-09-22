@@ -13,5 +13,5 @@ RUN mvn clean package
 FROM java:8 AS runtime
 WORKDIR /ops/application
 COPY --from=build-stage /build/target/spring-petclinic-rest-2.2.5.jar /app.jar 
-EXPOSE 8080
+EXPOSE 9966
 ENTRYPOINT ["java","-jar","/app.jar"]
