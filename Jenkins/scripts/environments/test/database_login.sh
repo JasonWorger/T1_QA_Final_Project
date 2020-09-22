@@ -15,9 +15,9 @@ cp spring-petclinic-rest/src/main/resources/db/mysql/populateDB.sql .
 
 # Run our files on mysql.
 
-mysql -h $RDS_ENDPOINT -P 3306 -u root --password=$TF_VAR_DB_ROOT_PASSWORD < initDB.sql
+mysql -h $RDS_ENDPOINT -p 3306 -u root --password=$TF_VAR_DB_ROOT_PASSWORD < initDB.sql
 
-mysql -h $RDS_ENDPOINT -P 3306 -u root --password=$TF_VAR_DB_ROOT_PASSWORD petclinic < populateDB.sql
+mysql -h $RDS_ENDPOINT -p 3306 -u root --password=$TF_VAR_DB_ROOT_PASSWORD petclinic < populateDB.sql
 
 # Clean up.
 
