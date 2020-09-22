@@ -28,7 +28,12 @@ variable "public_subnet_az_2_id" {
   default     = "This variable must be defined at environment level."
 }
 
-variable "rds_subnet_group_id" {
+variable "rds_subnet_1_id" {
+  description = "The AWS ID belonging to our rds subnet."
+  default     = "This variable must be defined at environment level."
+}
+
+variable "rds_subnet_2_id" {
   description = "The AWS ID belonging to our rds subnet."
   default     = "This variable must be defined at environment level."
 }

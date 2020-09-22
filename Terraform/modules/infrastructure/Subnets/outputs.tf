@@ -25,7 +25,12 @@ output "rds_subnet_name" {
   description = "The name of our db subnet group, within the main VPC."
 }
 
-output "rds_subnet_group_id" {
-  value       = aws_db_subnet_group.rds_subnet_group.id
-  description = "The ID of our db subnet group, within the main VPC."
+output "rds_subnet_1_id" {
+  value       = aws_subnet.private_rds_subnet_az1.id
+  description = "The ID of our db subnet 1, within the main VPC."
+}
+
+output "rds_subnet_2_id" {
+  value       = aws_subnet.private_rds_subnet_az2.id
+  description = "The ID of our db subnet 2, within the main VPC."
 }
