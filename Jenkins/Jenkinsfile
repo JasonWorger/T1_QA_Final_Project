@@ -50,14 +50,16 @@ pipeline {
             }
         }
 
-
+*/
         stage('Dockerfy and artifact'){
             steps{
                 //Call script here
-                sh 'Jenkins/scripts/artifact.sh'
+                sh 'Jenkins/scripts/docker/docker-install.sh'
+                sh 'Jenkins/scripts/docker/docker-compose-install.sh'
+                sh 'Jenkins/scripts/docker/artifact.sh'
             }
         }
-*/
+
         stage('Deploy images'){
             steps{
                 //Call script here
