@@ -1,0 +1,1 @@
+### This directory is used to configure the SQL database schema for each environment.

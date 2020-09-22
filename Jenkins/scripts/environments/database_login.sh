@@ -15,11 +15,9 @@ cp spring-petclinic-rest/src/main/resources/db/mysql/populateDB.sql .
 
 # Run our files on mysql.
 
-mysql -h $TESTING_RDS_ENDPOINT -P 3306 -u root -p $DATABASE_PASSWORD < initDB.sql
+mysql -h terraform-20200922113603881400000001.cl3gwff76jo7.eu-west-1.rds.amazonaws.com -P 3306 -u root -p $DATABASE_PASSWORD < initDB.sql
 
-mysql -h terraform-20200922072712750400000007.cl3gwff76jo7.eu-west-1.rds.amazonaws.com -P 3306 --user=root --password=$DATABASE_PASSWORD < initDB.sql
-
-mysql -h $TESTING_RDS_ENDPOINT -P 3306 -u root -p $DATABASE_PASSWORD < populateDB.sql
+mysql -h terraform-20200922113603881400000001.cl3gwff76jo7.eu-west-1.rds.amazonaws.com -P 3306 -u root -p $DATABASE_PASSWORD < populateDB.sql
 
 # Clean up.
 
