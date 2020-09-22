@@ -1,7 +1,7 @@
 # Create a configured RDS Instance.
 
 resource "aws_db_instance" "rds_instance" {
-  name = "${var.environment}FPdatabase"
+  name = "${var.environment}fpdatabase"
 
   db_subnet_group_name   = var.db_subnet_group_name
   vpc_security_group_ids = [var.rds_sec_group_id]
@@ -22,4 +22,9 @@ resource "aws_db_instance" "rds_instance" {
   password = var.db_root_password
 
   skip_final_snapshot = true  # So we can delete our RDS instance with Terraform.
+
+  tags = {
+    Name = "${var.environment} - RDS Instance"
+    Project = "FP-T1"
+  }
 }
