@@ -13,18 +13,6 @@ sudo groupadd docker
 
 sudo usermod -aG docker $(whoami)
 
-looper=1
-
-while [ ${looper} -lt 20 ]
-
-do
-
-    echo "*** Restart this virtual machine now!***"
-    ((looper++))
-
-done
-
-
 # -----------
 
 
