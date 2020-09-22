@@ -140,7 +140,7 @@ resource "aws_route_table" "rds_route_table" {
   }
 }
 
-resource "aws_route_table_association" "eks_private_route_table_2_asc" {
+resource "aws_route_table_association" "rds_route_table_asc" {
   route_table_id = aws_route_table.rds_route_table.id
   subnet_id = var.rds_subnet_group_id
 }
