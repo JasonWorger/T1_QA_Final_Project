@@ -1,6 +1,5 @@
 FROM docker.io/library/node:10.10-alpine as build
 
-
 COPY spring-petclinic-angular /workspace/
 
 ARG NPM_REGISTRY=" https://registry.npmjs.org"
