@@ -3,7 +3,7 @@ variable "region" {}
 variable "maximum_node_group_size" {}
 variable "desired_node_group_size" {}
 variable "database_instance_class" {}
-variable "db_root_password" {}
+variable "DB_ROOT_PASSWORD" {}
 variable "db_max_allocated_storage" {}
 variable "controller_IP_CIDR" {}
 variable "public_subnet_az_1_cidr_block" {}
@@ -51,6 +51,6 @@ module "infrastructure" {
 
   # Database Configuration
   database_instance_class  = var.database_instance_class
-  db_root_password         = var.db_root_password
+  DB_ROOT_PASSWORD = var.DB_ROOT_PASSWORD
   db_max_allocated_storage = var.db_max_allocated_storage
 }
