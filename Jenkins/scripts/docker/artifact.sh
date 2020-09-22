@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # cd into docker repository.
+sudo apt-get install openjdk-8-jre maven default-jre
 
 cd docker
 echo "cd into docker"
