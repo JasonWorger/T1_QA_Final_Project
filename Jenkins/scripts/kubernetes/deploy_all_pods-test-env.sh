@@ -14,7 +14,7 @@ kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/down
 kubectl apply -f Kubernetes/nginx/configmap.yaml
 
 # Runs our nginx reverse proxy.
-kubectl apply -f Kubernetes/nginx.yaml
+kubectl apply -f Kubernetes/nginx/nginx.yaml
 
 # ----- PETCLINIC -----
 
