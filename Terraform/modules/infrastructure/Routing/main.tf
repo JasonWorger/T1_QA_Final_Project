@@ -37,7 +37,7 @@ resource "aws_route_table_association" "eks_public_1_route_table_asc" {
 
 resource "aws_route_table_association" "eks_public_2_route_table_asc" {
   route_table_id = aws_route_table.eks_public_route_table.id
-  subnet_id = var.public_subnet_az_1_id
+  subnet_id = var.public_subnet_az_2_id
 }
 
 # ----- NAT GATEWAYS -----
