@@ -1,15 +1,20 @@
-FROM docker.io/library/node:10.10-alpine as build
+ARG DOCKER_HUB="docker.io"
 
-COPY spring-petclinic-angular /workspace/
+FROM $DOCKER_HUB/library/node:10.10-alpine as build
 
-ARG NPM_REGISTRY="http://registry.npmjs.org"
 
-RUN echo "registry = \'$NPM_REGISTRY'\" > /workspace/.npmrc                              && \
+COPY spring_petclinic_angular/ /workspace/
+
+ARG NPM_REGISTRY=" https://registry.npmjs.org"
+
+RUN echo "registry = \"$NPM_REGISTRY\"" > /workspace/.npmrc                              && \
     cd /workspace/                                                                       && \
     npm install                                                                          && \
     npm run build
 
-FROM docker.io/library/nginx:1.17.6 AS runtime
+ARG NGINX_VERSION="1.17.6"
+FROM $DOCKER_HUB/library/nginx:$NGINX_VERSION AS runtime
+
 
 COPY  --from=build /workspace/dist/ /usr/share/nginx/html/
 
@@ -17,10 +22,9 @@ RUN chmod a+rwx /var/cache/nginx /var/run /var/log/nginx                        
     sed -i.bak 's/listen\(.*\)80;/listen 8080;/' /etc/nginx/conf.d/default.conf && \
     sed -i.bak 's/^user/#user/' /etc/nginx/nginx.conf
 
-EXPOSE 4200
+
+EXPOSE 8080
 
 USER nginx
 
 HEALTHCHECK     CMD     [ "service", "nginx", "status" ]
-
-
