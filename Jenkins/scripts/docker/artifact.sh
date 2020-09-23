@@ -26,10 +26,6 @@ git clone https://github.com/spring-petclinic/spring-petclinic-rest.git
 # Copy Dockerfile from Dockerfiles/PetClinicREST to REST cloned folder.
 
 sudo cp Dockerfiles/PetClinicREST/Dockerfile spring-petclinic-rest
-# Copy Dockerfile from Dockerfiles/PetClinicAngular to Angular cloned folder.
-
-sudo cp Dockerfiles/PetClinicAngular/Dockerfile spring-petclinic-angular
-sudo cp Dockerfiles/PetClinicAngular/.dockerignore spring-petclinic-angular
 
 # Run docker-compose.
 sudo docker-compose build
