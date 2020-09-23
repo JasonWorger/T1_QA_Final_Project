@@ -40,7 +40,7 @@ sudo rm -rf spring-petclinic-rest
 git clone https://github.com/spring-petclinic/spring-petclinic-angular.git
 
 # Change directory to the petclinic-angular folder.
-cd spring-petclinic-angular.git
+cd spring-petclinic-angular
 
 # Build docker image.
 docker build -t spring-petclinic-angular:latest .
