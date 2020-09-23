@@ -22,13 +22,15 @@ pipeline {
         }
         End template*/
 
-
+/*
 
         stage('Test software'){
             steps{
                 sh 'Jenkins/scripts/test_software.sh'
             }
         }
+
+*/
 
 
         stage('Hardware - Terraform'){
@@ -42,7 +44,7 @@ pipeline {
             }
         }
 
-
+/*
 
         stage('Database initialisation'){
             steps{
@@ -52,6 +54,8 @@ pipeline {
                 sh 'Jenkins/scripts/environments/test/database_login.sh'
             }
         }
+
+*/
 
         stage('Dockerfy and artifact'){
             steps{
