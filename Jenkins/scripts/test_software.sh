@@ -7,4 +7,13 @@ cd spring-petclinic-angular
 #npm i karma karma-chrome-launcher chromium
 #export CHROME_BIN="/usr/local/lib/node_modules/chromium"
 #ng test
+
+git clone https://github.com/spring-petclinic/spring-petclinic-rest.git
+
+cd spring-petclinic/spring-petclinic-rest/
+
 mvn test
+
+cd ../..
+
+sudo rm -r spring-petclinic
