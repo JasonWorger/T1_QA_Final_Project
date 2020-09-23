@@ -4,5 +4,5 @@ sudo apt install openjdk-8-jre maven default-jre
 npm install
 ng update
 npm update
-npm i karma
+npm i karma karma-chrome-launcher
 ng test
