@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Echo the RDS Endpoint
-
+echo "The Testing RDS Endpoint is..."
 echo $TESTING_RDS_ENDPOINT
 
 # Make a temporary directory.
