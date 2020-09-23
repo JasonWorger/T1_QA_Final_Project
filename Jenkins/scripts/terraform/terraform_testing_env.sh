@@ -26,8 +26,9 @@ echo "Text file created."
 
 echo "Creating environment variable from contents of rds_endpoint.txt..."
 
-export TESTING_RDS_ENDPOINT=$(terraform output rds_endpoint)
+#export TESTING_RDS_ENDPOINT=$(terraform output rds_endpoint)
 
-echo $TESTING_RDS_ENDPOINT
+
+#echo $TESTING_RDS_ENDPOINT
 
 sudo rm testing_rds_endpoint.txt
