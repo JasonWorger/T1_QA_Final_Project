@@ -9,8 +9,9 @@ echo "cd into docker"
 echo "The working directory is:"
 pwd
 
-# Remove our previous images.
-sudo docker-compose down --rmi all
+# Prune our system.
+
+docker system prune -f
 
 # Removing previous git repos.
 
