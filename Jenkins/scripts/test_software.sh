@@ -1,5 +1,4 @@
 #!/bin/bash
-cd spring-petclinic-angular
 #sudo apt install openjdk-8-jre maven default-jre
 #npm install
 #ng update
@@ -10,10 +9,10 @@ cd spring-petclinic-angular
 
 git clone https://github.com/spring-petclinic/spring-petclinic-rest.git
 
-cd spring-petclinic/spring-petclinic-rest/
+cd spring-petclinic-rest
 
 mvn test
 
-cd ../..
+cd ..
 
-sudo rm -r spring-petclinic
+sudo rm -rf spring-petclinic-rest
