@@ -1,10 +1,6 @@
-#! /bin/bash
-git clone https://github.com/spring-petclinic/spring-petclinic-rest.git
-
-cd spring-petclinic/spring-petclinic-rest/
-
-mvn test
-
-cd ../..
-
-sudo rm -r spring-petclinic
+#!/bin/bash
+git clone https://github.com/spring-petclinic/spring-petclinic-angular.git
+cd spring-petclinic-angular
+sudo apt install install openjdk-8-jre maven default-jre
+npm install karma
+ng test
