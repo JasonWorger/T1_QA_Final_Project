@@ -5,8 +5,9 @@ pipeline {
         AWS_ACCESS_KEY_ID = credentials('ACCESS_KEY')
         AWS_SECRET_ACCESS_KEY = credentials('SECRET_ACCESS_KEY')
         TF_VAR_DB_ROOT_PASSWORD = credentials('MYSQL_ROOT_PASSWORD')
-        //DOCKER_USERNAME = credentials('DOCKER_USERNAME')
-        //DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
+        DOCKER_USERNAME = credentials('DOCKER_USERNAME')
+        DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
+        DOCKER_EMAIL = "joshuahigginson1@gmail.com"
 
     }
 
