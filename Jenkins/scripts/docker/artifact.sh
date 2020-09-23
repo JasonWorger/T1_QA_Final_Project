@@ -43,10 +43,10 @@ git clone https://github.com/spring-petclinic/spring-petclinic-angular.git
 cd spring-petclinic-angular
 
 # Build docker image.
-docker build -t spring-petclinic-angular:latest .
+docker build -t frontend:latest .
 
 # Push image to docker.io.
-sudo docker push spring-petclinic-angular:latest
+sudo docker push docker.io/team1qa/frontend:latest
 
 # cd back one step.
 cd ..
