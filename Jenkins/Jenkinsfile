@@ -54,7 +54,6 @@ pipeline {
 
         stage('Dockerfy and artifact'){
             steps{
-                //Call script here
                 sh 'Jenkins/scripts/docker/docker-install.sh'
                 sh 'Jenkins/scripts/docker/artifact.sh'
             }
