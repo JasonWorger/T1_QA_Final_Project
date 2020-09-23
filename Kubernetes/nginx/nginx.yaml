@@ -29,9 +29,6 @@ spec:
           - name: nginx-config
             mountPath: /etc/nginx/conf.d
 
-      imagePullSecrets:
-        - name: regcred
-
       volumes:
         - name: nginx-config
           configMap:
