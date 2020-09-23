@@ -4,9 +4,8 @@ metadata:
   name: loadbalancer
 spec:
   selector:
-    app: loadbalancer
+    app: nginx
   ports:
   - port: 80
     targetPort: 80
-    protocol: TCP
   type: LoadBalancer
