@@ -9,7 +9,7 @@ RUN echo "registry = \'$NPM_REGISTRY\'" > /workspace/.npmrc                     
     npm install                                                                          && \
     npm run build
 
-FROM docker.io/library/nginx:1.19.2 AS runtime
+FROM docker.io/library/nginx:1.17.6 AS runtime
 
 COPY  --from=build /workspace/dist/ /usr/share/nginx/html/
 
