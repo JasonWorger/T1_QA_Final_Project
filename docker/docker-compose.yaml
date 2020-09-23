@@ -1,16 +1,6 @@
 ---
     version: '3.7'
     services:
-      nginx:
-        image: team1qa/nginx:laetst
-        build:
-          context: .
-          dockerfile: Dockerfiles/nginx/Dockerfile
-        ports:
-          - target: 80
-            published: 80
-            protocol: tcp
-
       backend:
         image: team1qa/backend:latest
         build:
