@@ -4,10 +4,6 @@ metadata:
   name: nginx-config
 data:
   default.conf: |
-    events{}
-
-    http {
-
       server {
 
         listen 80;
@@ -23,6 +19,4 @@ data:
           proxy_pass http://spring-petclinic-rest:9966/petclinic/api/;
 
         }
-
       }
-    }
