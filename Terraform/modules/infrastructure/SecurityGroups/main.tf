@@ -102,7 +102,7 @@ resource "aws_security_group_rule" "cluster_controller_pod_communication_HTTPS" 
 
   type = "ingress"
 
-  from_port = 443 # Maybe also 10250 as well? Will have to test.
+  from_port = 443
   to_port   = 443
   protocol  = "tcp"
 
