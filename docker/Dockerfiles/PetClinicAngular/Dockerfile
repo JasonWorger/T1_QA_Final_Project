@@ -2,7 +2,7 @@ FROM docker.io/library/node:10.10-alpine as build
 
 COPY spring-petclinic-angular /workspace/
 
-ARG NPM_REGISTRY=" https://registry.npmjs.org"
+ARG NPM_REGISTRY="http://registry.npmjs.org"
 
 RUN echo "registry = \'$NPM_REGISTRY\'" > /workspace/.npmrc                              && \
     cd /workspace/                                                                       && \
