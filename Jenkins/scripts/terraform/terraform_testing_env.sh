@@ -12,4 +12,4 @@ terraform plan --var-file=test.tfvars -out=testplan
 
 terraform apply "testplan"
 
-export TESTING_RDS_ENDPOINT=$(terraform output rds_endpoint)
+export TESTING_RDS_ENDPOINT=`terraform output rds_endpoint`
