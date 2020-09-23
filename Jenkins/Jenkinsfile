@@ -47,7 +47,7 @@ pipeline {
             steps{
                 //Call script here
                 script {
-                    env.TESTING_RDS_ENDPOINT = sh(script: 'cat Terraform/environments/test/testing_rds_endpoint.txt"', returnStdout: true).trim()
+                    env.TESTING_RDS_ENDPOINT = sh(script: 'cat Terraform/environments/test/testing_rds_endpoint.txt', returnStdout: true).trim()
                 }
                 sh 'echo "Initialising Database... The RDS Endpoint is..."'
                 sh 'echo $TESTING_RDS_ENDPOINT'
