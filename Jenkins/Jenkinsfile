@@ -9,6 +9,7 @@ pipeline {
         DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
         DOCKER_EMAIL = credentials('DOCKER_EMAIL')
 
+
     }
 
     stages {
