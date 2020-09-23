@@ -18,10 +18,7 @@ spec:
         image: nginx:latest
         ports:
         - containerPort: 80
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 80
+
         volumeMounts:
         - name: nginx-config
           mountPath: /etc/nginx/conf.d

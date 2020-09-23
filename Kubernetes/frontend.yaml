@@ -22,7 +22,7 @@ spec:
         image: team1qa/frontend
         ports:
         - containerPort: 4200
-          hostPort: 4200
+
       imagePullSecrets:
         - name: regcred
 
