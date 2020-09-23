@@ -22,8 +22,9 @@ spec:
         image: team1qa/backend
         ports:
         - containerPort: 9966
+          hostPort: 9966
       imagePullSecrets:
-        - name: dockercredentials
+        - name: regcred
 ---
 apiVersion: v1
 kind: Service
