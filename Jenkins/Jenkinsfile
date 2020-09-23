@@ -46,7 +46,7 @@ pipeline {
         stage('Database initialisation'){
             steps{
                 //Call script here
-                env.TESTING_RDS_ENDPOINT = sh(script: "~/T1_QA_Final_Project/Jenkins/scripts/terraform_output_env_vars.sh", returnStdout: true)
+                env.TESTING_RDS_ENDPOINT = sh(script: "~/T1_QA_Final_Project/Jenkins/scripts/terraform_output_env_vars.sh", , returnStdout: true)
                 sh 'echo "Initialising Database... The RDS Endpoint is..."'
                 sh 'echo $TESTING_RDS_ENDPOINT'
                 sh 'Jenkins/scripts/environments/test/database_login.sh'
