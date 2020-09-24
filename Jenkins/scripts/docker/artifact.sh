@@ -27,8 +27,8 @@ sudo cp Dockerfiles/PetClinicREST/Dockerfile spring-petclinic-rest
 # sudo cp buildDepencies/PetClinicREST/<FILE>
 
 # Replace our temporary variables with the actual values.
-sed 's/{{rootPassword}}/$TF_VAR_DB_ROOT_PASSWORD/g' <file/path>
-sed 's/{{databaseURI}}/$TESTING_RDS_ENDPOINT/g' <file/path>
+# sed 's/{{rootPassword}}/$TF_VAR_DB_ROOT_PASSWORD/g' <file/path>
+# sed 's/{{databaseURI}}/$TESTING_RDS_ENDPOINT/g' <file/path>
 
 # Run docker-compose.
 sudo docker-compose build --no-cache
