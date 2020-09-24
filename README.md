@@ -50,11 +50,9 @@ We also utilised other agile tools to plan our project such as planning poker fo
 
 Below is a risk assessment that was carried out to help us identify the potential risks and problems that could arise whilst developing or after developing our project. By doing this we could then figure out ways of preventing these problems so that we are prepared if they ever do arise.
 
-![Risk Assessment](.README_images/9c190a96.png)
-
 
 <p align="center">
-<kbd><img src=".README_images/9c190a96.png" alt="ci" width="500"/></kbd>
+<kbd><img src=".README_images/9c190a96.png" alt="ci" width="900"/></kbd>
 </p>
 
 ## CI Pipeline
