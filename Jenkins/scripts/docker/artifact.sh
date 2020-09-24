@@ -49,7 +49,7 @@ docker build -t frontend:latest .
 sudo docker push docker.io/team1qa/frontend:latest
 
 # cd back one step.
-cd ..
+# cd ..
 
 # Remove git repository.
-sudo rm -r spring-petclinic-angular
+# sudo rm -r spring-petclinic-angular
