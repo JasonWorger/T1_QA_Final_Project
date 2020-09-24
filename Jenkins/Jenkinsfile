@@ -54,7 +54,7 @@ pipeline {
             }
         }
 
-    */
+
 
         stage('Dockerfy and artifact'){
             steps{
