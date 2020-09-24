@@ -15,7 +15,6 @@ sudo usermod -aG docker $(whoami)
 
 # -----------
 
-
 # Make sure that jq & curl is installed.
 
 sudo apt update
