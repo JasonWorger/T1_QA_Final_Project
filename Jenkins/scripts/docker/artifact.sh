@@ -68,7 +68,7 @@ cd spring-petclinic-angular
 docker build --no-cache -t frontend:latest .
 
 # Push image to docker.io.
-sudo docker push docker.io/team1qa/frontend:latest
+sudo docker push docker.io/team1qa/frontend:test
 
 # cd back one step.
 cd ..
