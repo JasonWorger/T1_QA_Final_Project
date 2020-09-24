@@ -38,7 +38,7 @@ sed -i "s|{{dbURI}}|$TESTING_RDS_ENDPOINT|g" spring-petclinic-rest/src/main/reso
 sudo docker-compose build --no-cache
 
 # Login with our docker credentials.
-sudo docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+sudo docker login docker.io -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
 # Push our built images to docker.
 sudo docker-compose push
@@ -68,7 +68,7 @@ cd spring-petclinic-angular
 docker build --no-cache -t team1qa/frontend:test .
 
 # Push image to docker.io.
-docker push team1qa/frontend:test
+sudo docker push team1qa/frontend:test
 
 # cd back one step.
 cd ..
