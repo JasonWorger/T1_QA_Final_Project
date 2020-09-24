@@ -52,7 +52,7 @@ Below is a risk assessment that was carried out to help us identify the potentia
 
 
 <p align="center">
-<kbd><img src=".README_images/9c190a96.png" alt="ci" width="900"/></kbd>
+<kbd><img src=".README_images/9c190a96.png" alt="ci" width="1000"/></kbd>
 </p>
 
 ## CI Pipeline
