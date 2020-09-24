@@ -12,8 +12,8 @@ cd docker
 docker system prune -f
 
 # Remove previous git repos.
-sudo rm -rf spring-petclinic-angular
-sudo rm -rf spring-petclinic-rest
+sudo rm -r spring-petclinic-angular
+sudo rm -r spring-petclinic-rest
 
 # ----- REST API -----
 
