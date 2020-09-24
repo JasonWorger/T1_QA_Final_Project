@@ -28,7 +28,7 @@ The main aim of this project was to plan, design and implement a solution for th
 
 The first week of the project was spent planning and researching the technologies that we will be needing to use to complete the deployment of the app. In the final week, we ran daily stand-ups and ensured that we kept track of our tasks by utilising a project tracking board that clearly showed the effort and productivity of the team, each day. For this we used Jira and planned the project out with full expansion on user stories, use cases and tasks needed to complete the project. It also helped  us keep track of any issues or risks that we could face whilst completing the project.
 
-Link to Jira Board: HERE
+Link to Jira Board: https://team-1579095236068.atlassian.net/jira/software/projects/FP/boards/6
 
 We also utilised other agile tools to plan our project such as planning poker for example.  This tool was used by all of us to rank how important we thought certain tasks were going to be.  This then helped us plan and prioritise which tasks were most important and how much time we should allocate to them.  
 
@@ -37,7 +37,7 @@ We also utilised other agile tools to plan our project such as planning poker fo
 
 Below is a risk assessment that was carried out to help us identify the potential risks and problems that could arise whilst developing or after developing our project. By doing this we could then figure out ways of preventing these problems so that we are prepared if they ever do arise.
 
-(IMAGE HERE)
+![RiskAssessment](.README_images/151d6425.png)
 
 
 ## CI Pipeline
