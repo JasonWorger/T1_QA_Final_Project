@@ -52,6 +52,7 @@ pipeline {
             }
         }
 
+    */
 
         stage('Dockerfy and artifact'){
             steps{
@@ -60,7 +61,7 @@ pipeline {
             }
         }
 
-    */
+
 
         stage('Deploy images'){
             steps{
