@@ -34,18 +34,6 @@ sed -i "s|{{dbURI}}|$TESTING_RDS_ENDPOINT|g" spring-petclinic-rest/src/main/reso
 # Test our sed function works.
 # cat spring-petclinic-rest/src/main/resources/application-mysql.properties
 
-# Run docker-compose.
-sudo docker-compose build --no-cache
-
-# Login with our docker credentials.
-sudo docker login docker.io -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-
-# Push our built images to docker.
-sudo docker-compose push
-
-# Remove our cloned git repos to save space.
-sudo rm -rf spring-petclinic-rest
-
 # ----- ANGULAR -----
 
 # Clone our angular frontend repo.
@@ -59,19 +47,33 @@ sudo cp buildDependencies/PetClinicAngular/environment.ts spring-petclinic-angul
 sudo cp buildDependencies/PetClinicAngular/environment.prod.ts spring-petclinic-angular/src/environments/
 
 # Test our overwrite function.
-cat spring-petclinic-angular/src/environments/environment.ts
+# cat spring-petclinic-angular/src/environments/environment.ts
+
+# Run docker-compose.
+sudo docker-compose build --no-cache
+
+# Login with our docker credentials.
+sudo docker login docker.io -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+
+# Push our built images to docker.
+sudo docker-compose push
+
+# Remove our cloned git repos to save space.
+sudo rm -r spring-petclinic-rest
+sudo rm -r spring-petclinic-angular
+
+# ----- DEPRECIATED -----
 
 # Change directory to the petclinic-angular folder.
-cd spring-petclinic-angular
+# cd spring-petclinic-angular
 
 # Build docker image.
-docker build --no-cache -t team1qa/frontend:test .
+# docker build --no-cache -t team1qa/frontend:test .
 
 # Push image to docker.io.
-sudo docker push team1qa/frontend:test
+# sudo docker push team1qa/frontend:test
 
 # cd back one step.
-cd ..
+# cd ..
 
-# Remove git repository.
-sudo rm -r spring-petclinic-angular
+
