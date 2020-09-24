@@ -1,30 +1,30 @@
 #!/bin/bash
 
-# ----- REST API -----
+# ----- DEPENDENCIES -----
+
+# Install build dependencies.
+sudo apt install openjdk-8-jre maven default-jre
 
 # cd into docker repository.
-sudo apt-get install openjdk-8-jre maven default-jre
-
 cd docker
 
-echo "cd into docker"
-echo "The working directory is:"
-pwd
-
 # Prune our system.
-
 docker system prune -f
 
-# Removing previous git repos.
-
+# Remove previous git repos.
 sudo rm -rf spring-petclinic-angular
 sudo rm -rf spring-petclinic-rest
+
+# ----- REST API -----
 
 # Clone REST Repository.
 git clone https://github.com/spring-petclinic/spring-petclinic-rest.git
 
 # Copy Dockerfile from Dockerfiles/PetClinicREST to REST cloned folder.
 sudo cp Dockerfiles/PetClinicREST/Dockerfile spring-petclinic-rest
+
+# Copy database dependencies to REST cloned folder.
+# sudo cp buildDepencies/PetClinicREST/<FILE>
 
 # Run docker-compose.
 sudo docker-compose build
@@ -45,6 +45,10 @@ git clone https://github.com/spring-petclinic/spring-petclinic-angular.git
 
 # Copy Dockerfile from Dockerfiles/PetClinicREST to REST cloned folder.
 sudo cp Dockerfiles/PetClinicAngular/Dockerfile spring-petclinic-angular
+
+# Copy environment dependencies to ANGULAR cloned folder.
+sudo cp buildDepencies/PetClinicAngular/environment.ts spring-petclinic-angular/src/environments/environment.ts
+sudo cp buildDepencies/PetClinicAngular/environment.prod.ts spring-petclinic-angular/src/environments/environment.prod.ts
 
 # Change directory to the petclinic-angular folder.
 cd spring-petclinic-angular
