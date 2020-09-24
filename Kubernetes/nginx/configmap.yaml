@@ -7,7 +7,7 @@ data:
     server {
       listen 80;
       location / {
-        proxy_pass http://frontend:4200/;
+        proxy_pass http://frontend:8080/;
       }
 
       location /petclinic/api {

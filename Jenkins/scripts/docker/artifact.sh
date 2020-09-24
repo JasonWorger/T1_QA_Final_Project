@@ -31,8 +31,7 @@ sed -i "s|{{rootPassword}}|$TF_VAR_DB_ROOT_PASSWORD|g" spring-petclinic-rest/src
 sed -i "s|{{dbURI}}|$TESTING_RDS_ENDPOINT|g" spring-petclinic-rest/src/main/resources/application-mysql.properties
 
 # Test our sed function works.
-
-cat spring-petclinic-rest/src/main/resources/application-mysql.properties
+# cat spring-petclinic-rest/src/main/resources/application-mysql.properties
 
 # Run docker-compose.
 sudo docker-compose build --no-cache
