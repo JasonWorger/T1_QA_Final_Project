@@ -58,6 +58,9 @@ sudo cp Dockerfiles/PetClinicAngular/Dockerfile spring-petclinic-angular
 sudo cp buildDependencies/PetClinicAngular/environment.ts spring-petclinic-angular/src/environments/environment.ts
 sudo cp buildDependencies/PetClinicAngular/environment.prod.ts spring-petclinic-angular/src/environments/environment.prod.ts
 
+# Test our overwrite function.
+cat spring-petclinic-angular/src/environments/environment.ts
+
 # Change directory to the petclinic-angular folder.
 cd spring-petclinic-angular
 
