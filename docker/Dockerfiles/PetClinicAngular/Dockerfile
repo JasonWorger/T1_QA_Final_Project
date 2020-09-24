@@ -1,7 +1,7 @@
 
 ARG DOCKER_HUB="docker.io"
 
-FROM $DOCKER_HUB/library/node:10.10-alpine as build
+FROM $DOCKER_HUB/library/node:12.2.0 as build
 
 COPY . /workspace/
 
