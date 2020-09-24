@@ -18,7 +18,7 @@ spec:
         app: frontend
     spec:
       containers:
-      - name: backend
+      - name: frontend
         image: team1qa/frontend
         imagePullPolicy: Always
         ports:
