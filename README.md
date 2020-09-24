@@ -12,6 +12,7 @@
 * [Docker](#docker)
 * [Kubernetes](#kubernetes)
 * [Terraform](#terraform)
+* [Cost Breakdown](#cost-breakdown)
 * [Team Members](#team-members)
 
 
@@ -70,6 +71,7 @@ We chose to use Kubernetes for our orchestration tool for a number of reasons.  
 
 We used terraform to build our infrastructure on AWS. We chose to use Terraform because it would automate the process of building the infrastructure needed to run the app.  We use it to build the VPC, Subnets, EC2 instances, Security groups and many more resources that were needed.  By using Terraform it helped speed up the process and improved development time massively.
 
+## Cost Breakdown
 
 ## Team Members
 
