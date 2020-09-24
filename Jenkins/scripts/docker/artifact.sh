@@ -65,7 +65,7 @@ cat spring-petclinic-angular/src/environments/environment.ts
 cd spring-petclinic-angular
 
 # Build docker image.
-docker build --no-cache -t frontend:latest .
+docker build --no-cache -t frontend:test .
 
 # Push image to docker.io.
 sudo docker push docker.io/team1qa/frontend:test
