@@ -55,11 +55,11 @@ git clone https://github.com/spring-petclinic/spring-petclinic-angular.git
 sudo cp Dockerfiles/PetClinicAngular/Dockerfile spring-petclinic-angular
 
 # Copy environment dependencies to ANGULAR cloned folder.
-sudo cp buildDependencies/PetClinicAngular/environment.ts spring-petclinic-angular/src/environments/environment.ts
-sudo cp buildDependencies/PetClinicAngular/environment.prod.ts spring-petclinic-angular/src/environments/environment.prod.ts
+sudo cp buildDependencies/PetClinicAngular/environment.ts spring-petclinic-angular/src/environments/
+sudo cp buildDependencies/PetClinicAngular/environment.prod.ts spring-petclinic-angular/src/environments/
 
 # Test our overwrite function.
-# cat spring-petclinic-angular/src/environments/environment.ts
+cat spring-petclinic-angular/src/environments/environment.ts
 
 # Change directory to the petclinic-angular folder.
 cd spring-petclinic-angular
