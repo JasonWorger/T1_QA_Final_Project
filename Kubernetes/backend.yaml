@@ -20,9 +20,10 @@ spec:
       containers:
       - name: backend
         image: team1qa/backend
+        imagePullPolicy: Always
         ports:
         - containerPort: 9966
-          hostPort: 9966
+
       imagePullSecrets:
         - name: regcred
 ---

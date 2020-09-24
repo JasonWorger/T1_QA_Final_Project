@@ -15,8 +15,14 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: team1qa/nginx
+        image: nginx:latest
         ports:
         - containerPort: 80
-          hostPort: 80
-          protocol: TCP
+
+        volumeMounts:
+        - name: nginx-config
+          mountPath: /etc/nginx/conf.d
+      volumes:
+      - name: nginx-config
+        configMap:
+          name: nginx-config

@@ -1,16 +1,6 @@
 ---
     version: '3.7'
     services:
-      nginx:
-        image: team1qa/nginx:laetst
-        build:
-          context: .
-          dockerfile: Dockerfiles/nginx/Dockerfile
-        ports:
-          - target: 80
-            published: 80
-            protocol: tcp
-
       backend:
         image: team1qa/backend:latest
         build:
@@ -20,16 +10,4 @@
           - target: 9966
             published: 9966
             protocol: tcp
-
-      frontend:
-        image: team1qa/frontend:latest
-        build:
-          context: .
-          dockerfile: Dockerfiles/PetClinicAngular/Dockerfile
-        ports:
-        - target: 4200
-          published: 4200
-          protocol: tcp
-        depends_on:
-        - backend
 ...

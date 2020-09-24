@@ -8,8 +8,15 @@ curl https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-i
 # Deploys the AWS Metrics Server.
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
 
+# ----- NGINX -----
+
+# Create our NGINX ConfigMap.
+kubectl apply -f Kubernetes/nginx/configmap.yaml
+
 # Runs our nginx reverse proxy.
-kubectl apply -f Kubernetes/nginx.yaml
+kubectl apply -f Kubernetes/nginx/nginx.yaml
+
+# ----- PETCLINIC -----
 
 # Runs our back end REST API. We must start this before the front end.
 kubectl apply -f Kubernetes/backend.yaml
@@ -19,7 +26,6 @@ kubectl apply -f Kubernetes/frontend.yaml
 
 # Runs our loadBalancer service.
 kubectl apply -f Kubernetes/loadbalancer.yaml
-
 
 # ------------- INCOMPLETE ----------------
 
