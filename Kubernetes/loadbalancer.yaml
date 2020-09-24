@@ -10,7 +10,6 @@ spec:
     targetPort: 80
     protocol: TCP
   type: LoadBalancer
-
 ---
 apiVersion: v1
 kind: Service
