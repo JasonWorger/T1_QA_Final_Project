@@ -14,6 +14,8 @@ RUN echo "registry = \"$NPM_REGISTRY\"" > /workspace/.npmrc                     
 
 FROM docker.io/library/nginx:stable-alpine as runtime
 
+RUN apk --no-cache add curl
+
 COPY  --from=build /workspace/dist/ /usr/share/nginx/html/
 
 RUN chmod a+rwx /var/cache/nginx /var/run /var/log/nginx                        && \
