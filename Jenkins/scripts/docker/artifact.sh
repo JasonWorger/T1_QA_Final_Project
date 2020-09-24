@@ -24,6 +24,7 @@ git clone https://github.com/spring-petclinic/spring-petclinic-rest.git
 sudo cp Dockerfiles/PetClinicREST/Dockerfile spring-petclinic-rest
 
 # Copy database dependencies to REST cloned folder.
+sudo cp buildDependencies/PetClinicREST/application.properties spring-petclinic-rest/src/main/resources/
 sudo cp buildDependencies/PetClinicREST/application-mysql.properties spring-petclinic-rest/src/main/resources/
 
 # Replace our temporary variables with the actual values.
