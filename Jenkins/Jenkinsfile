@@ -67,8 +67,8 @@ pipeline {
         stage('Deploy images'){
             steps{
                 //Call script here
-                sh 'Jenkins/scripts/kubernetes/register_docker_credentials.sh'
                 sh 'Jenkins/scripts/kubernetes/testing_env_kubernetes_script.sh'
+                sh 'Jenkins/scripts/kubernetes/register_docker_credentials.sh'
                 sh 'Jenkins/scripts/kubernetes/deploy_all_pods-test-env.sh'
             }
         }
