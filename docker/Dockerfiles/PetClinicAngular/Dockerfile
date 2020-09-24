@@ -3,7 +3,7 @@ ARG DOCKER_HUB="docker.io"
 
 FROM $DOCKER_HUB/library/node:12.2.0 as build
 
-COPY . /workspace/
+COPY spring-petclinic-angular /workspace/
 
 ARG NPM_REGISTRY=" https://registry.npmjs.org"
 
