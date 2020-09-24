@@ -6,7 +6,7 @@
 ## Table of Contents
 
 * [About the Project](#about-the-project)
-* [Jira Board](#jira-board)
+* [Project Planning](#project-planning)
 * [Risk Analysis](#risk-analysis)
 * [CI Pipeline](#ci-pipeline)
 * [Kubernetes](#kubernetes)
