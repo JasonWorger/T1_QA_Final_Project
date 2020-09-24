@@ -53,6 +53,10 @@ Below is a risk assessment that was carried out to help us identify the potentia
 ![Risk Assessment](.README_images/9c190a96.png)
 
 
+<p align="center">
+<kbd><img src=".README_images/9c190a96.png" alt="ci" width="500"/></kbd>
+</p>
+
 ## CI Pipeline
 
 Below is the CI Pipeline that describes our project.  The tools used for each section are also detailed below.
