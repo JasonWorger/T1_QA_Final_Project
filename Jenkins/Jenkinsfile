@@ -22,16 +22,11 @@ pipeline {
         }
         End template*/
 
-/*
-
         stage('Test software'){
             steps{
                 sh 'Jenkins/scripts/test_software.sh'
             }
         }
-
-*/
-
 
         stage('Hardware - Terraform'){
             steps{
@@ -44,18 +39,19 @@ pipeline {
             }
         }
 
-/*
-
         stage('Database initialisation'){
             steps{
-                //Call script here
+
+                script {
+                    env.TESTING_RDS_ENDPOINT = sh(script: 'cat Terraform/environments/test/testing_rds_endpoint.txt', returnStdout: true).trim()
+                }
+              
                 sh 'echo "Initialising Database... The RDS Endpoint is..."'
                 sh 'echo $TESTING_RDS_ENDPOINT'
                 sh 'Jenkins/scripts/environments/test/database_login.sh'
             }
         }
 
-*/
 
         stage('Dockerfy and artifact'){
             steps{
@@ -66,7 +62,7 @@ pipeline {
 
         stage('Deploy images'){
             steps{
-                //Call script here
+
                 sh 'Jenkins/scripts/kubernetes/testing_env_kubernetes_script.sh'
                 sh 'Jenkins/scripts/kubernetes/register_docker_credentials.sh'
                 sh 'Jenkins/scripts/kubernetes/deploy_all_pods-test-env.sh'
