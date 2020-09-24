@@ -9,6 +9,7 @@
 * [Project Planning](#project-planning)
 * [Risk Analysis](#risk-analysis)
 * [CI Pipeline](#ci-pipeline)
+* [Docker](#docker)
 * [Kubernetes](#kubernetes)
 * [Terraform](#terraform)
 * [Team Members](#team-members)
@@ -54,6 +55,11 @@ Below is the CI Pipeline that describes our project.  The tools used for each se
 <p align="center">
 <kbd><img src="Documents/ci_pipeline.jpeg" alt="ci" width="500"/></kbd>
 </p>
+
+
+## Docker
+
+We used Docker for our containerisation tool, we chose this tool as we all have lots of experience using it and at the minute Docker is the industry standard in containerisation. Docker images are also compatible with other tools we are useing such as Kubernetes, this then allows for a smooth deployment.
 
 ## Kubernetes
 
