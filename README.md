@@ -87,7 +87,7 @@ We used terraform to build our infrastructure on AWS. We chose to use Terraform 
 ## Cost Breakdown
 
 <p align="center">
-<kbd><img src="Documents/Cost_Breakdown.jpeg" alt="ci" width="500"/></kbd>
+<kbd><img src="Documents/Cost_Breakdown.jpeg" alt="ci" width="800"/></kbd>
 </p>
 
 ## Team Members
