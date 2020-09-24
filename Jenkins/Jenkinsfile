@@ -30,6 +30,8 @@ pipeline {
             }
         }
 
+    */
+
         stage('Hardware - Terraform'){
             steps{
                 sh 'Jenkins/scripts/terraform/install_terraform_dependencies.sh'
