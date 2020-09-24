@@ -8,8 +8,6 @@ pipeline {
         DOCKER_USERNAME = credentials('DOCKER_USERNAME')
         DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
         DOCKER_EMAIL = credentials('DOCKER_EMAIL')
-
-
     }
 
     stages {
@@ -22,15 +20,11 @@ pipeline {
         }
         End template*/
 
-    /*
-
         stage('Test software'){
             steps{
                 sh 'Jenkins/scripts/test_software.sh'
             }
         }
-
-    */
 
         stage('Hardware - Terraform'){
             steps{
@@ -54,16 +48,12 @@ pipeline {
             }
         }
 
-
-
         stage('Dockerfy and artifact'){
             steps{
                 sh 'Jenkins/scripts/docker/docker-install.sh'
                 sh 'Jenkins/scripts/docker/artifact.sh'
             }
         }
-
-
 
         stage('Deploy images'){
             steps{
