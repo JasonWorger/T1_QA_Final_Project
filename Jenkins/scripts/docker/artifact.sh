@@ -62,18 +62,5 @@ sudo docker-compose push
 sudo rm -r spring-petclinic-rest
 sudo rm -r spring-petclinic-angular
 
-# ----- DEPRECIATED -----
-
-# Change directory to the petclinic-angular folder.
-# cd spring-petclinic-angular
-
-# Build docker image.
-# docker build --no-cache -t team1qa/frontend:test .
-
-# Push image to docker.io.
-# sudo docker push team1qa/frontend:test
-
-# cd back one step.
-# cd ..
 
 

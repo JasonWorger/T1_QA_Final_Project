@@ -12,12 +12,7 @@ aws cloudwatch put-metric-alarm --alarm-name Test_Env_Disk_Alarm --alarm-descrip
 
 # Our Dashboard represented in JSON format.
 
-
-
-
-
 dashboard=$(cat cloudwatch/json/dashboard.json)
-
 
 # Create our AWS Dashboard
 
