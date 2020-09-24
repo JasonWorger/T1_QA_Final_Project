@@ -27,16 +27,16 @@ sudo cp Dockerfiles/PetClinicREST/Dockerfile spring-petclinic-rest
 # sudo cp buildDepencies/PetClinicREST/<FILE>
 
 # Replace our temporary variables with the actual values.
-sed 's/{{secretKey}}/$TF_VAR_DB_ROOT_PASSWORD/g' <file/path>
-sed 's/{{secretKey}}/$TF_VAR_DB_ROOT_PASSWORD/g' <file/path>
+sed 's/{{rootPassword}}/$TF_VAR_DB_ROOT_PASSWORD/g' <file/path>
+sed 's/{{databaseURI}}/$TESTING_RDS_ENDPOINT/g' <file/path>
 
 # Run docker-compose.
-sudo docker-compose build
+sudo docker-compose build --no-cache
+
 # Login with our docker credentials.
-
 sudo docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-# Push our built images to docker
 
+# Push our built images to docker.
 sudo docker-compose push
 
 # Remove our cloned git repos to save space.
@@ -58,7 +58,7 @@ sudo cp buildDepencies/PetClinicAngular/environment.prod.ts spring-petclinic-ang
 cd spring-petclinic-angular
 
 # Build docker image.
-docker build -t frontend:latest .
+docker build --no-cache -t frontend:latest .
 
 # Push image to docker.io.
 sudo docker push docker.io/team1qa/frontend:latest
