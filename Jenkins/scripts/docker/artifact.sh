@@ -24,11 +24,11 @@ git clone https://github.com/spring-petclinic/spring-petclinic-rest.git
 sudo cp Dockerfiles/PetClinicREST/Dockerfile spring-petclinic-rest
 
 # Copy database dependencies to REST cloned folder.
-# sudo cp buildDepencies/PetClinicREST/<FILE>
+sudo cp buildDependencies/PetClinicREST/application-mysql.properties spring-petclinic-rest/src/main/resources/
 
 # Replace our temporary variables with the actual values.
-# sed 's/{{rootPassword}}/$TF_VAR_DB_ROOT_PASSWORD/g' <file/path>
-# sed 's/{{databaseURI}}/$TESTING_RDS_ENDPOINT/g' <file/path>
+sed 's/{{rootPassword}}/$TF_VAR_DB_ROOT_PASSWORD/g' spring-petclinic-rest/src/main/resources/application-mysql.properties
+sed 's/{{databaseURI}}/$TESTING_RDS_ENDPOINT/g' spring-petclinic-rest/src/main/resources/application-mysql.properties
 
 # Run docker-compose.
 sudo docker-compose build --no-cache
@@ -51,8 +51,8 @@ git clone https://github.com/spring-petclinic/spring-petclinic-angular.git
 sudo cp Dockerfiles/PetClinicAngular/Dockerfile spring-petclinic-angular
 
 # Copy environment dependencies to ANGULAR cloned folder.
-sudo cp buildDepencies/PetClinicAngular/environment.ts spring-petclinic-angular/src/environments/environment.ts
-sudo cp buildDepencies/PetClinicAngular/environment.prod.ts spring-petclinic-angular/src/environments/environment.prod.ts
+sudo cp buildDependencies/PetClinicAngular/environment.ts spring-petclinic-angular/src/environments/environment.ts
+sudo cp buildDependencies/PetClinicAngular/environment.prod.ts spring-petclinic-angular/src/environments/environment.prod.ts
 
 # Change directory to the petclinic-angular folder.
 cd spring-petclinic-angular
@@ -64,7 +64,7 @@ docker build --no-cache -t frontend:latest .
 sudo docker push docker.io/team1qa/frontend:latest
 
 # cd back one step.
-# cd ..
+cd ..
 
 # Remove git repository.
-# sudo rm -r spring-petclinic-angular
+sudo rm -r spring-petclinic-angular
