@@ -26,6 +26,10 @@ sudo cp Dockerfiles/PetClinicREST/Dockerfile spring-petclinic-rest
 # Copy database dependencies to REST cloned folder.
 # sudo cp buildDepencies/PetClinicREST/<FILE>
 
+# Replace our temporary variables with the actual values.
+sed 's/{{secretKey}}/$TF_VAR_DB_ROOT_PASSWORD/g' <file/path>
+sed 's/{{secretKey}}/$TF_VAR_DB_ROOT_PASSWORD/g' <file/path>
+
 # Run docker-compose.
 sudo docker-compose build
 # Login with our docker credentials.
