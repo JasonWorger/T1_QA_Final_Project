@@ -88,6 +88,8 @@ We used terraform to build our infrastructure on AWS. We chose to use Terraform 
 
 ## Cost Breakdown
 
+For the project, the aim was to keep costs low if possible while delivering a product to the highest standard. Therefore, certain tools and frameworks were chosen to maintain this goal. It was decided to try and use as many tools as possible within AWS so that costs could be managed in the most efficient manner and allowed for budgeting to be defined. Costs have also been reduced or mitigated by using tools that are within the free tier while providing the highest performance. Below shows the cost breakdown of the tools used within AWS to deploy the pet clinic application for the client on a daily basis that would help to give an insight of the costs that would be incurred if the application was to be deployed for a month.
+
 <p align="center">
 <kbd><img src="Documents/Cost_Breakdown.jpeg" alt="ci" width="800"/></kbd>
 </p>
