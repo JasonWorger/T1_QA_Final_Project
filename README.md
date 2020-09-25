@@ -1,5 +1,4 @@
-# QA_Final_Project
-
+# QA Academy - Team 1 - Final Project
 
 
 <!-- TABLE OF CONTENTS -->
@@ -13,9 +12,9 @@
 * [Kubernetes](#kubernetes)
 * [Terraform](#terraform)
 * [Cost Breakdown](#cost-breakdown)
-* [Team Members](#team-members)
-
-
+* [Known Issues and Future Optimisations](#known-issues-and-future-optimisations)
+* [Team Members](#contributors--authors)
+* [Acknowledgements](#acknowledgements)
 
 
 <!-- ABOUT THE PROJECT -->
@@ -86,6 +85,8 @@ We chose to use Kubernetes for our orchestration tool for a number of reasons.  
 
 We used terraform to build our infrastructure on AWS. We chose to use Terraform because it would automate the process of building the infrastructure needed to run the app.  We use it to build the VPC, Subnets, EC2 instances, Security groups and many more resources that were needed.  By using Terraform it helped speed up the process and improved development time massively.
 
+A demonstration of this can be found here: https://www.youtube.com/watch?v=-7YAmIFRSRY
+
 ## Cost Breakdown
 
 For the project, the aim was to keep costs low if possible while delivering a product to the highest standard. Therefore, certain tools and frameworks were chosen to maintain this goal. It was decided to try and use as many tools as possible within AWS so that costs could be managed in the most efficient manner and allowed for budgeting to be defined. Costs have also been reduced or mitigated by using tools that are within the free tier while providing the highest performance. Below shows the cost breakdown of the tools used within AWS to deploy the pet clinic application for the client on a daily basis that would help to give an insight of the costs that would be incurred if the application was to be deployed for a month.
@@ -94,9 +95,21 @@ For the project, the aim was to keep costs low if possible while delivering a pr
 <kbd><img src="Documents/Cost_Breakdown.jpeg" alt="ci" width="800"/></kbd>
 </p>
 
-## Team Members
+## Known Issues and Future Optimisations
 
-* Josh Higginson
-* Jason Worger
-* Bradley Daniels
-* Samuel Asquith
+Sometimes, Terraform does not build our node groups first time. This is why we have two terraform stages in this project.
+
+Our Cloudwatch Dashboard does not connect automatically with our new cluster.
+
+NACL settings are fully open to the world, though the devices inside are locked down behind fully functional security groups.
+
+## Contributors & Authors
+Josh Higginson - AUTHOR - Junior DevOps Consultant for QA Consulting.
+Jason Worker - AUTHOR - Junior DevOps Consultant for QA Consulting.
+Bradley Daniels - AUTHOR - Junior DevOps Consultant for QA Consulting.
+Samuel Asquith - AUTHOR - Junior DevOps Consultant for QA Consulting.
+
+## Acknowledgements
+Harry Volker & Luke Benson for continued mentorship throughout the academy.
+
+The hard work and friendliness of other teams at QA.
